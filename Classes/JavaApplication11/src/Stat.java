@@ -18,7 +18,7 @@ public class Stat{
     public int getIteration() {
         return iteration;
     }
-    public void heal{
+    public void heal(){
             health += multiplier * value;
             if (health > maxHP){
                 health = maxHP;
@@ -26,7 +26,7 @@ public class Stat{
         
     }
   
-    public void shield{
+    public void shield(){
             build += multiplier * value;
             if (build > maxBuild){
                 build = maxBuild;
