@@ -19,11 +19,10 @@ public class Stat{
         return iteration;
     }
     public void heal(){
-            health += multiplier * value;
+        health += multiplier * value;
             if (health > maxHP){
                 health = maxHP;
             }
-        
     }
   
     public void shield(){
@@ -32,4 +31,6 @@ public class Stat{
                 build = maxBuild;
             }
     }
+    // Has a number of times to be executed based on Control Flow and Conditional cards
+    
 }
