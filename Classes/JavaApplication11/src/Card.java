@@ -9,9 +9,9 @@
  * @author MUON
  */
 public class Card {
-    private String Type;
+    protected String type;
 
-    public Card(String Type) {
+    public Card(String type) {
         this.Type = Type;
     }
     public Card properties(Card c) {
@@ -21,11 +21,11 @@ public class Card {
         return c;
     }
 
-    public void setType(String Type) {
-        this.Type = Type;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
 }
