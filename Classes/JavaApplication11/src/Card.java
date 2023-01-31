@@ -9,7 +9,7 @@
  * @author MUON
  */
 public class Card {
-    String Type;
+    private String Type;
 
     public Card(String Type) {
         this.Type = Type;

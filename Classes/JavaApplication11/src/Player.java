@@ -9,8 +9,8 @@
  * @author MUON
  */
 public class Player {
-    int health;
-    Card cardsAvailable;
+    private int health, maxHP, block, maxBlock;
+    private Card cardsAvailable;
     
     public Player(int health, Card cardsAvailable) {
         this.health = health;

@@ -8,6 +8,8 @@
  *
  * @author MUON
  */
+import java.util.ArrayList;
+import java.util.Collections;
 public class Main {
 
     /**
@@ -15,6 +17,12 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Card myCard = new Card("Strike");
+        Card newCard = new Card("Defend");
+        Card card3 = new Card("Piercing Wail");
+        Deck deck = new Deck();
+        Collections.addAll(deck.getDeck(), myCard, newCard, card3);
+        System.out.println(deck.getDeck().get(0).getType());
     }
     
 }
