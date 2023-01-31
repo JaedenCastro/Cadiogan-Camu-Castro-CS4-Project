@@ -1,7 +1,11 @@
 public class Condition {
     private int property;
 		
-		public void modifyCF{
+	public int getProperty() {
+        	return property;
+    	}
+	
+	public void modifyCF{
 		
-		}
+	}
 }
