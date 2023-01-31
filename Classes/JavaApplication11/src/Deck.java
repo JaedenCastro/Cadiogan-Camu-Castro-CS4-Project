@@ -12,13 +12,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 public class Deck {
     private final ArrayList<Card> deck;
-    private final ArrayList<Card> Hand;
+    private final ArrayList<Card> hand;
     private final ArrayList<Card> drawList;
     private final ArrayList<Card> discardList;
 
     public Deck() {
         deck = new ArrayList<>(52);
-        Hand = new ArrayList<>(13);
+        hand = new ArrayList<>(13);
         drawList = deck;
         discardList = new ArrayList<>(0);
     }
@@ -50,7 +50,7 @@ public class Deck {
      * @return the Hand
      */
     public ArrayList<Card> getHand() {
-        return Hand;
+        return hand;
     }
 
     /**
