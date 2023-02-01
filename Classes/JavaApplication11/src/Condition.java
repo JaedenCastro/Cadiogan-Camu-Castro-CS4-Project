@@ -5,7 +5,7 @@ public class Condition {
         	return property;
     	}
 	
-	public void modifyCF{
+	public void modifyCF(){
 		
 	}
 }

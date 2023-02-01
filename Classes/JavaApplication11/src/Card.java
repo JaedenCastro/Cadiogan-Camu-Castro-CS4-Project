@@ -12,7 +12,7 @@ public class Card {
     protected String type;
 
     public Card(String type) {
-        this.Type = Type;
+        this.type = type;
     }
     public Card properties(Card c) {
         return c;

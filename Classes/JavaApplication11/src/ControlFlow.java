@@ -4,7 +4,7 @@ public class ControlFlow {
 	public int getProperty() {
         return property;
     }
-	public void modifyStat {
+	public void modifyStat() {
 		
 	}
 }
