@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Muon-Cadiogan-Muon-Camu-Muon-Castro_3rdQtrMilestone1/Battle/Battle.iml" filepath="$PROJECT_DIR$/Muon-Cadiogan-Muon-Camu-Muon-Castro_3rdQtrMilestone1/Battle/Battle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Muon-Cadiogan-Muon-Camu-Muon-Castro_3rdQtrMilestone1/Menu/Menu.iml" filepath="$PROJECT_DIR$/Muon-Cadiogan-Muon-Camu-Muon-Castro_3rdQtrMilestone1/Menu/Menu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Milestone 2.iml" filepath="$PROJECT_DIR$/.idea/Milestone 2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Muon-Cadiogan-Muon-Camu-Muon-Castro_3rdQtrMilestone1/Pause/Pause.iml" filepath="$PROJECT_DIR$/Muon-Cadiogan-Muon-Camu-Muon-Castro_3rdQtrMilestone1/Pause/Pause.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e57e6fd2-baff-4d47-ac96-ff32c38a67c9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/build.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/manifest.mf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/nbproject/build-impl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/nbproject/genfiles.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/nbproject/project.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/nbproject/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/src/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/src/Card.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/src/Condition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/src/ControlFlow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/src/Deck.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/src/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Classes/JavaApplication11/src/Stat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Muon_Cadiogan_Muon_Camu_Muon-Castro_3rdQtrMilestone1_Screen1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Muon_Cadiogan_Muon_Camu_Muon-Castro_3rdQtrMilestone1_Screen2/build.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Muon_Cadiogan_Muon_Camu_Muon-Castro_3rdQtrMilestone1_Screen2/manifest.mf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Muon_Cadiogan_Muon_Camu_Muon-Castro_3rdQtrMilestone1_Screen2/nbproject/build-impl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Muon_Cadiogan_Muon_Camu_Muon-Castro_3rdQtrMilestone1_Screen2/nbproject/configs/Run_as_WebStart.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Muon_Cadiogan_Muon_Camu_Muon-Castro_3rdQtrMilestone1_Screen2/nbproject/configs/Run_in_Browser.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Muon_Cadiogan_Muon_Camu_Muon-Castro_3rdQtrMilestone1_Screen2/nbproject/genfiles.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Muon_Cadiogan_Muon_Camu_Muon-Castro_3rdQtrMilestone1_Screen2/nbproject/jfx-impl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Muon_Cadiogan_Muon_Camu_Muon-Castro_3rdQtrMilestone1_Screen2/nbproject/project.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Muon_Cadiogan_Muon_Camu_Muon-Castro_3rdQtrMilestone1_Screen2/nbproject/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Muon_Cadiogan_Muon_Camu_Muon-Castro_3rdQtrMilestone1_Screen2/src/muon/cadiogan/muon/camu/muon/castro_3rdqtrmilestone1_screen2/FXMLDocument.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Muon_Cadiogan_Muon_Camu_Muon-Castro_3rdQtrMilestone1_Screen2/src/muon/cadiogan/muon/camu/muon/castro_3rdqtrmilestone1_screen2/FXMLDocumentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Muon_Cadiogan_Muon_Camu_Muon-Castro_3rdQtrMilestone1_Screen2/src/muon/cadiogan/muon/camu/muon/castro_3rdqtrmilestone1_screen2/ThirdQtrMilestone1_Screen2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pausescreen.zip" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2NOhGoQotrTUloqujcl7kkZI8W7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/jaede/CS/3rd Qtr/Finished Outputs/Cadiogan-Camu-Castro-CS4-Project/Muon-Cadiogan-Muon-Camu-Muon-Castro_3rdQtrMilestone1/Menu/src"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e57e6fd2-baff-4d47-ac96-ff32c38a67c9" name="Changes" comment="" />
+      <created>1679540943122</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679540943122</updated>
+    </task>
+    <servers />
+  </component>
+</project>
