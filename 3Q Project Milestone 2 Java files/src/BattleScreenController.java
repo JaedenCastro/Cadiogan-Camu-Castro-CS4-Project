@@ -50,8 +50,8 @@ public class BattleScreenController extends ControllerBase implements Initializa
             Label label = new Label(p1Deck.getDeck().get(0).getName());
             stackPane.getChildren().addAll(square, label);
             cards.getChildren().add(stackPane);
-            p1Deck.getHand().add(p1Deck.getDeck().get(0));
-            p1Deck.getDeck().remove(0);
+            p1Deck.getHand().add(p1Deck.getDrawList().get(0));
+            p1Deck.getDrawList().remove(0);
         } catch (IndexOutOfBoundsException e) {
 
         }
@@ -61,7 +61,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
         try {
             ObservableList<Node> children = cards.getChildren();
             children.remove(children.size() - 1);
-            p1Deck.getDeck().add(p1Deck.getHand().get(0));
+            p1Deck.getDiscardList().add(p1Deck.getHand().get(0));
             p1Deck.getHand().remove((0));
         } catch (IndexOutOfBoundsException e) {
 
@@ -70,6 +70,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         p1Deck.addToDeck(Strike);
+        p1Deck.getDrawList().add(p1Deck.getDeck().get(0));
     }
 
     
