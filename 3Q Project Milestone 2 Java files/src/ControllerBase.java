@@ -6,7 +6,7 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import Classes.*;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

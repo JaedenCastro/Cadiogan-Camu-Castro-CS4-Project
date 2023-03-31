@@ -1,4 +1,4 @@
- /*
+package Classes; /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -11,16 +11,19 @@
 import java.util.ArrayList;
 import java.util.Collections;
 public class Deck {
-    private final ArrayList<Card> deck;
-    private final ArrayList<Card> hand;
-    private final ArrayList<Card> drawList;
-    private final ArrayList<Card> discardList;
+    private static ArrayList<Card> deck;
+    private ArrayList<Card> hand;
+    private ArrayList<Card> drawList;
+    private ArrayList<Card> discardList;
 
     public Deck() {
         deck = new ArrayList<>(52);
         hand = new ArrayList<>(13);
         drawList = deck;
         discardList = new ArrayList<>(0);
+    }
+    public void addToDeck(Card c) {
+        deck.add(c);
     }
     public void draw(){
         getHand().add(deck.get(0)); //adds 1st element of cardList to the end of Hand

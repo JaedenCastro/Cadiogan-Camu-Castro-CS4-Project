@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -53,13 +54,18 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="81.0" text="Draw" />
+                        <Button mnemonicParsing="false" onAction="#Draw" prefHeight="45.0" prefWidth="81.0" text="Draw" />
                         <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="81.0" text="Discard" GridPane.columnIndex="1" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player Stats:" wrappingWidth="112.13671875" GridPane.rowIndex="1" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player HP" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                     </children>
                 </GridPane>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Location of Cards:" wrappingWidth="510.13671875" />
+            <AnchorPane prefHeight="274.0" prefWidth="512.0">
+               <children>
+                      <Text layoutX="16.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location of Cards:" wrappingWidth="101.47007751464844" />
+                  <HBox fx:id="cards" layoutX="145.0" layoutY="74.0" prefHeight="100.0" prefWidth="200.0" />
+               </children>
+            </AnchorPane>
                 <Pane prefHeight="268.0" prefWidth="247.0" style="-fx-border-color: #000000;">
                     <children>
                         <Text layoutX="85.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu/Options" />

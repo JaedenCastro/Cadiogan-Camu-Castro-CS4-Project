@@ -1,3 +1,5 @@
+package Classes;
+
 public class Condition {
     private int property;
 		
