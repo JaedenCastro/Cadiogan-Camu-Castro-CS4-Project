@@ -9,10 +9,10 @@ package Classes;/*
  * @author MUON
  */
 public class Card {
-    protected String type;
+    protected String name;
 
     public Card(String type, int i, int i1, int i2) {
-        this.type = type;
+        this.name = type;
     }
     public Card properties(Card c) {
         return c;
@@ -22,10 +22,10 @@ public class Card {
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.name = type;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 }

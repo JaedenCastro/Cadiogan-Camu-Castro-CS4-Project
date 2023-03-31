@@ -55,7 +55,7 @@
                     </rowConstraints>
                     <children>
                         <Button mnemonicParsing="false" onAction="#Draw" prefHeight="45.0" prefWidth="81.0" text="Draw" />
-                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="81.0" text="Discard" GridPane.columnIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#Discard" prefHeight="45.0" prefWidth="81.0" text="Discard" GridPane.columnIndex="1" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player Stats:" wrappingWidth="112.13671875" GridPane.rowIndex="1" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player HP" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                     </children>
