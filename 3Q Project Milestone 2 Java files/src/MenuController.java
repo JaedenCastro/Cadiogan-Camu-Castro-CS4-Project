@@ -39,7 +39,7 @@ public class MenuController extends ControllerBase implements Initializable  {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        Image img = new Image(getClass().getResourceAsStream("Logo.png"));
+        Image img = new Image(getClass().getResourceAsStream("Images/Logo.png"));
         logo.setImage(img);
         logo.setOpacity((0));
     }

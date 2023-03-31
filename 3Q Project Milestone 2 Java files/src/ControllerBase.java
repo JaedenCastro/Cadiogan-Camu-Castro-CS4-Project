@@ -38,7 +38,7 @@ public abstract class ControllerBase{
         Scene currentScene = node.getScene();
         Stage currentStage = (Stage) currentScene.getWindow();
 
-        Parent root = FXMLLoader.load(getClass().getResource(s));
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/"+s));
         Scene subjectScene = new Scene(root);
         currentStage.hide();
         currentStage.setScene(subjectScene);

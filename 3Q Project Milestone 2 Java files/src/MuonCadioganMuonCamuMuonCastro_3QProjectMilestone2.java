@@ -17,7 +17,7 @@ public class MuonCadioganMuonCamuMuonCastro_3QProjectMilestone2 extends Applicat
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("MenuScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/MenuScreen.fxml"));
         
         Scene scene = new Scene(root);
         
