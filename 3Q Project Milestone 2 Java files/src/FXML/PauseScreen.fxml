@@ -12,9 +12,9 @@
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <VBox alignment="CENTER" layoutX="112.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
          <children>
-              <Button fx:id="resume" onAction="#handleButtonAction" text="Resume" />
-            <Button fx:id="settings" onAction="#handleButtonAction" text="Settings" />
-            <Button fx:id="menu" onAction="#handleButtonAction" text="Menu" />
+              <Button fx:id="resume" onAction="#resume" text="Resume" />
+            <Button fx:id="settings" onAction="#settings" text="Settings" />
+            <Button fx:id="menu" onAction="#menu" text="Menu" />
             <Button fx:id="quit" onAction="#handleButtonAction" text="Quit" />
          </children>
       </VBox>
