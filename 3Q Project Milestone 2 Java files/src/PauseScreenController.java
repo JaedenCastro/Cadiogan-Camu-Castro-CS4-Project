@@ -15,17 +15,17 @@ public class PauseScreenController implements Initializable {
     private Label label;
     
     @FXML
-    private void resume (ActionEvent event) throws IOException {
+    public void resume (ActionEvent event) throws IOException {
         newScreen(event, "BattleScreen.fxml");
     }
     
     @FXML
-    private void menu (ActionEvent event) throws IOException {
+    public void menu (ActionEvent event) throws IOException {
         newScreen(event, "MenuScreen.fxml");
     }
     
     @FXML
-    private void settings (ActionEvent event) throws IOException {
+    public void settings (ActionEvent event) throws IOException {
         newScreen(event, "OptionsScreen.fxml");
     }
     
