@@ -15,7 +15,7 @@
               <Button fx:id="Resume" onAction="#handleButtonAction" text="Resume" />
             <Button fx:id="settings" onAction="#handleButtonAction" text="Settings" />
             <Button fx:id="menu" onAction="#handleButtonAction" text="Menu" />
-            <Button fx:id="quit" onAction="#handleButtonAction" text=" Quit" />
+            <Button fx:id="quit" onAction="#handleButtonAction" text="Quit" />
          </children>
       </VBox>
     </children>
