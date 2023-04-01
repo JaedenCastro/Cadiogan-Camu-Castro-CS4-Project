@@ -23,7 +23,7 @@
             </rowConstraints>
             <children>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="P2 Stats/HP" />
-                <Button mnemonicParsing="false" onAction="#back" text="Back" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+                <Button mnemonicParsing="false" onAction="#back" text="Pause" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="P2 Cards (Face Down)" GridPane.columnIndex="1" />
             </children>
         </GridPane>

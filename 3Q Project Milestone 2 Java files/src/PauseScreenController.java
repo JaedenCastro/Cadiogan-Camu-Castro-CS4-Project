@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
  *
  * @author windows10 user
  */
-public class PauseScreenController implements Initializable {
+public class PauseScreenController extends ControllerBase implements Initializable {
     
     @FXML
     private Label label;
@@ -18,9 +18,6 @@ public class PauseScreenController implements Initializable {
     @FXML
     public void resume (ActionEvent event) throws IOException {
         newScreen(event, "BattleScreen.fxml");
-    }
-
-    private void newScreen(ActionEvent event, String s) {
     }
 
     @FXML
@@ -32,7 +29,10 @@ public class PauseScreenController implements Initializable {
     public void settings (ActionEvent event) throws IOException {
         newScreen(event, "OptionsScreen.fxml");
     }
-    
+    @FXML
+    public void quit (ActionEvent event) throws IOException {
+        newScreen(event, "QuitScreen.fxml");
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
