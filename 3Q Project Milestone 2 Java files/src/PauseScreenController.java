@@ -15,9 +15,18 @@ public class PauseScreenController implements Initializable {
     private Label label;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private void resume (ActionEvent event) throws IOException {
+        newScreen(event, "BattleScreen.fxml");
+    }
+    
+    @FXML
+    private void menu (ActionEvent event) throws IOException {
+        newScreen(event, "MenuScreen.fxml");
+    }
+    
+    @FXML
+    private void settings (ActionEvent event) throws IOException {
+        newScreen(event, "OptionsScreen.fxml");
     }
     
     @Override
