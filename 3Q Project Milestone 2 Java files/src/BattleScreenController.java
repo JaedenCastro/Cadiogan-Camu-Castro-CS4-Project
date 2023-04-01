@@ -36,7 +36,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
 
     @FXML
     private void back (ActionEvent event) throws IOException {
-        newScreen(event, "MenuScreen.fxml");
+        newScreen(event, "PauseScreen.fxml");
     }
     @FXML
     public void Draw (ActionEvent event) throws IOException {
