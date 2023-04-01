@@ -35,8 +35,8 @@ public class BattleScreenController extends ControllerBase implements Initializa
     @FXML private HBox cards;
 
     @FXML
-    private void back (ActionEvent event) throws IOException {
-        newScreen(event, "FXML/PauseScreen.fxml");
+    public void back (ActionEvent event) throws IOException {
+        newScreen(event, "PauseScreen.fxml");
     }
     @FXML
     public void Draw (ActionEvent event) throws IOException {
