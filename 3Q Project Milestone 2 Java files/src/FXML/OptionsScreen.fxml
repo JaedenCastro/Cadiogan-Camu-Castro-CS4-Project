@@ -21,7 +21,7 @@
             <Slider />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Sound Effects" />
             <Slider />
-              <Button fx:id="button" onAction="#handleButtonAction" text="Return" />
+              <Button fx:id="return" onAction="#handleButtonAction" text="Return" />
          </children>
          <padding>
             <Insets bottom="20.0" left="10.0" top="20.0" />
