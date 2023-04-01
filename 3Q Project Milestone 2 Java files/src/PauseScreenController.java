@@ -4,6 +4,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 
 /**
@@ -31,7 +33,19 @@ public class PauseScreenController extends ControllerBase implements Initializab
     }
     @FXML
     public void quit (ActionEvent event) throws IOException {
-        newScreen(event, "QuitScreen.fxml");
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit?", ButtonType.YES, ButtonType.CANCEL);
+        alert.setTitle("Logout/Exit");
+        alert.setHeaderText(null);
+
+
+        ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+
+
+        if (result == ButtonType.YES) {
+
+            System.exit(0);
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
