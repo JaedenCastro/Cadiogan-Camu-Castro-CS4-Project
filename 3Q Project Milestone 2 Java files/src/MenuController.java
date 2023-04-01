@@ -19,6 +19,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import Classes.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 /**
  *
  * @author jaede
@@ -28,9 +30,21 @@ public class MenuController extends ControllerBase implements Initializable  {
     public void startGame (ActionEvent event) throws IOException {
         newScreen(event, "BattleScreen.fxml");
     }
-    public void quitGame (ActionEvent event) throws IOException {
-        newScreen(event, "QuitScreen.fxml");
-    }
+        public void quitGame (ActionEvent event) throws IOException {
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit?", ButtonType.YES, ButtonType.CANCEL);
+            alert.setTitle("Logout/Exit");
+            alert.setHeaderText(null);
+
+
+            ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+
+
+            if (result == ButtonType.YES) {
+
+                System.exit(0);
+            }
+        }
     @FXML
     public void showLogo(javafx.scene.input.MouseEvent mouseEvent) {
         logo.setOpacity((100));
