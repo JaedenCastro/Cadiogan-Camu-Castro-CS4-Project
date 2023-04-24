@@ -40,6 +40,7 @@ public class Deck {
         for (Card a: discardList) {
             getDrawList().add(a);
         }
+        discardList.clear();
     }
 
     /**
