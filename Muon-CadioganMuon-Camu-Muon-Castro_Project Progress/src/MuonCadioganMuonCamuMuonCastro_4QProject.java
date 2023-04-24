@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXML.java to edit this template
  */
 
-import Classes.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +13,7 @@ import javafx.stage.Stage;
  *
  * @author jaede
  */
-public class MuonCadioganMuonCamuMuonCastro_3QProjectMilestone2 extends Application {
+public class MuonCadioganMuonCamuMuonCastro_4QProject extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {

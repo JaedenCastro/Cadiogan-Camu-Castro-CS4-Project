@@ -10,26 +10,27 @@ package Classes;/*
  */
 public class Player {
     private int health, maxHP, block, maxBlock;
-    private Card cardsAvailable;
+    private Deck deck;
     
-    public Player(int health, Card cardsAvailable) {
+    public Player(int maxHP, int health, Deck deck) {
+        this.maxHP = 100;
         this.health = health;
-        this.cardsAvailable = cardsAvailable;
+        this.deck = deck;
     }
     public int getHealth() {
         return health;
     }
 
-    public Card getCardsAvailable() {
-        return cardsAvailable;
+    public Deck getDeck() {
+        return deck;
     }
 
     public void setHealth(int health) {
         this.health = health;
     }
 
-    public void setCardsAvailable(Card cardsAvailable) {
-        this.cardsAvailable = cardsAvailable;
+    public void setDeck(Card cardsAvailable) {
+        this.deck = deck;
     }
     
 

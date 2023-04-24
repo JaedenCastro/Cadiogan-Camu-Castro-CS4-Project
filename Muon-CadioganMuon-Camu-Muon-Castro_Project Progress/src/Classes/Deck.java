@@ -11,7 +11,7 @@ package Classes; /*
 import java.util.ArrayList;
 import java.util.Collections;
 public class Deck {
-    private static ArrayList<Card> deck;
+    private ArrayList<Card> deck;
     private ArrayList<Card> hand;
     private ArrayList<Card> drawList;
     private ArrayList<Card> discardList;
