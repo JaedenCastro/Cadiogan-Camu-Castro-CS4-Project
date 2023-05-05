@@ -23,7 +23,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 
 /**
  *
@@ -37,16 +39,22 @@ public class BattleScreenController extends ControllerBase implements Initializa
     Card Strike = new Card("Strike", 0, 0, 6);
     Card Defend = new Card("Defend", 0, 0, 5);
     Card Heal = new Card ("Heal",0, 0, 4);
+    int pile1Int=0, pile2Int=1, pile3Int=2;
     @FXML
     private Text hpLabel, playerDisplay;
     @FXML private HBox cards;
-    @FXML private StackPane pile1, pile2, pile3;
+    @FXML private HBox pile1, pile2, pile3;
+    private HBox activePile;
     Boolean counter = true;
+    Boolean pileBool = false, handBool = false;
     Player currentPlayer = player1;
     Deck currentDeck = p1Deck;
     @FXML
     public void back (ActionEvent event) throws IOException {
         newScreen(event, "PauseScreen.fxml");
+    }
+    private void dropTarget () {
+
     }
     private void Draw () {
         try {
@@ -66,33 +74,132 @@ public class BattleScreenController extends ControllerBase implements Initializa
             currentDeck.getHand().add(currentDeck.getDrawList().get(0));
             currentDeck.getDrawList().remove(0);
 
-            stackPane.getChildren().forEach((this::makeDraggable));
-            stackPane.getChildren().forEach((this::makeDroppable));
+            stackPane.getChildren().forEach(node -> {
+                makeDraggable(node);
+                makeDroppable(node);
+            });
         } catch (IndexOutOfBoundsException e) {
 
         }
     }
-    private double startX;
-    private double startY;
-    private void makeDraggable (Node node) {
+    private double startX, originalTranslateX;
+    private double startY, originalTranslateY;
+
+    /*
+
+    This code is still kind of buggy, for example the card might suddenly be let go
+    However, I think it's mostly bug free apart from my mouse letting go of the card sometimes
+    At this point I think it's a hardware issue
+
+     */
+    private void makeDraggable(Node node) {
         node.setOnMousePressed(e -> {
             startX = e.getSceneX() - node.getTranslateX();
             startY = e.getSceneY() - node.getTranslateY();
+            originalTranslateX = node.getTranslateX();
+            originalTranslateY = node.getTranslateY();
+            pileBool = false;
+            handBool = false;
         });
 
         node.setOnMouseDragged(e -> {
             node.setTranslateX(e.getSceneX()-startX);
             node.setTranslateY(e.getSceneY()-startY);
+            pileBool = false;
+            handBool = false;
         });
     }
-    private void makeDroppable (Node node) {
-        node.setOnMouseReleased(e -> {
 
-        });
+
+    private void makeDroppable(Node node) {
+        node.setOnMouseReleased(e -> {
+            node.setTranslateX(originalTranslateX);
+            node.setTranslateY(originalTranslateY);
+            pileBool = true;
+            handBool = true;
+
+        }); // bug with letting go outside of a pile which causes the next time you hover over a pile to create a card instance
     }
-    public void detectRelease(javafx.scene.input.MouseEvent mouseEvent) {
-        System.out.println("hello");
+    public void addToPile (HBox pile) {
+        Rectangle square = new Rectangle();
+        square.setWidth(75);
+        square.setHeight(100);
+        square.setFill(Color.WHITE);
+        square.setStroke(Color.BLACK);
+        try {
+            Label label = new Label(currentDeck.getHand().get(0).getName());
+            StackPane box = new StackPane();
+            StackPane stackPane = new StackPane();
+            box.getChildren().addAll(square, label);
+            stackPane.getChildren().addAll(box);
+            pile.getChildren().add(stackPane);
+            ObservableList<Node> children = cards.getChildren();
+            children.remove(children.size() - 1);
+            stackPane.getChildren().forEach(node -> {
+                makeDraggable(node);
+                makeDroppable(node);
+            });
+        } catch (IndexOutOfBoundsException i) {
+
+        }
+
     }
+    public void detectRelease1(javafx.scene.input.MouseEvent mouseEvent) {
+        activePile = pile1;
+        if (pileBool) {
+            pileBool = false;
+            addToPile(pile1);
+        }
+    }
+    public void detectRelease2(javafx.scene.input.MouseEvent mouseEvent) {
+        activePile = pile2;
+        if (pileBool) {
+            pileBool = false;
+            addToPile(pile2);
+        }
+    }
+    public void detectRelease3(javafx.scene.input.MouseEvent mouseEvent) {
+        activePile = pile3;
+        handBool = false;
+        if (pileBool) {
+            pileBool = false;
+            addToPile(pile3);
+        }
+    }
+    public void detectReleaseHand(javafx.scene.input.MouseEvent mouseEvent) {
+        pileBool = false;
+
+        if (handBool) {
+            System.out.println(handBool);
+            handBool = false;
+            Rectangle square = new Rectangle();
+            square.setWidth(75);
+            square.setHeight(100);
+            square.setFill(Color.WHITE);
+            square.setStroke(Color.BLACK);
+            try {
+                Label label = new Label(currentDeck.getHand().get(0).getName());
+                StackPane box = new StackPane();
+                StackPane stackPane = new StackPane();
+                box.getChildren().addAll(square, label);
+                stackPane.getChildren().addAll(box);
+                cards.getChildren().add(stackPane);
+                ObservableList<Node> children = activePile.getChildren();
+                children.remove(children.size() - 1);
+                stackPane.getChildren().forEach(node -> {
+                    makeDraggable(node);
+                    makeDroppable(node);
+                });
+            } catch (IndexOutOfBoundsException i) {
+
+            }
+        }
+    }
+    public void resetBools(javafx.scene.input.MouseEvent mouseEvent) {
+        handBool = false;
+        pileBool = false;
+    }
+
     @FXML
     public void Discard () {
         try {

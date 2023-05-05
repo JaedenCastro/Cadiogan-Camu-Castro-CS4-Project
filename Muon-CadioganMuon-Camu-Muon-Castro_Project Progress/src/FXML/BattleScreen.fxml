@@ -38,19 +38,22 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-            <StackPane onMousePressed="#detectRelease" prefHeight="150.0" prefWidth="200.0">
+            <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                      <Text onMousePressed="#detectRelease" strokeType="OUTSIDE" strokeWidth="0.0" text="Pile 1" />
+                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pile 1" />
+                  <HBox fx:id="pile1" onMouseEntered="#detectRelease1" onMouseExited="#resetBools" prefHeight="151.0" prefWidth="132.0" />
                </children>
             </StackPane>
-            <StackPane onMousePressed="#detectRelease" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pile 2" />
+                  <HBox fx:id="pile2" onMouseEntered="#detectRelease2" onMouseExited="#resetBools" prefHeight="100.0" prefWidth="200.0" />
                </children>
             </StackPane>
-            <StackPane onMousePressed="#detectRelease" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pile 3" />
+                  <HBox fx:id="pile3" onMouseEntered="#detectRelease3" onMouseExited="#resetBools" prefHeight="100.0" prefWidth="200.0" />
                </children>
             </StackPane>
             </children>
@@ -76,7 +79,7 @@
             <AnchorPane prefHeight="274.0" prefWidth="512.0">
                <children>
                       <Text layoutX="16.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location of Cards:" wrappingWidth="101.47007751464844" />
-                  <HBox fx:id="cards" layoutX="17.0" layoutY="87.0" prefHeight="100.0" prefWidth="200.0" />
+                  <HBox fx:id="cards" layoutX="17.0" layoutY="34.0" onMouseEntered="#detectReleaseHand" prefHeight="210.0" prefWidth="475.0" />
                </children>
             </AnchorPane>
                 <Pane prefHeight="268.0" prefWidth="247.0" style="-fx-border-color: #000000;">
