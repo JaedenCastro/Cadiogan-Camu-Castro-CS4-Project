@@ -26,19 +26,26 @@ public class OptionsScreenController extends ControllerBase implements Initializ
     }
     
     private MediaPlayer mediaPlayer;
-    private Slider volumeSlider;
-    
+    private static final String MEDIA_URL =
+            new File("Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/src/Music/bgmusic.mp3").toURI().toString();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        Media media = new Media("file:///path/to/mediafile.mp3");
-        mediaPlayer = new MediaPlayer(media);
-        
-         volumeSlider = new Slider(0, 1, 1);
-        volumeSlider.setOrientation(Orientation.HORIZONTAL);
-        volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            mediaPlayer.setVolume(newValue.doubleValue());
-        });
+
+        Media media = new Media(MEDIA_URL);
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setAutoPlay(true);
+
+        MediaView mediaView = new MediaView(mediaPlayer);
+
+        // Create a Slider for the volume
+        Slider volumeSlider = new Slider();
+        volumeSlider.setMin(0);
+        volumeSlider.setMax(1);
+        volumeSlider.setValue(1);
+        mediaPlayer.volumeProperty().bind(volumeSlider.valueProperty());
+
+    };
     }    
     
-}
+
