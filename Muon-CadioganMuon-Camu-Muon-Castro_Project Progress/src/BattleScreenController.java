@@ -23,6 +23,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
@@ -58,26 +60,25 @@ public class BattleScreenController extends ControllerBase implements Initializa
     }
     private void Draw () {
         try {
-            Rectangle square = new Rectangle();
-            square.setWidth(75);
-            square.setHeight(100);
-            square.setFill(Color.WHITE);
-            square.setStroke(Color.BLACK);
-            Label label = new Label(currentDeck.getDeck().get(0).getName());
+            Image cardA = new Image("Images/" + currentDeck.getDeck().get(0).getName() + ".png");
+            ImageView cardIcon = new ImageView();
+            cardIcon.setImage(cardA);
+            cardIcon.setX(100);
+            cardIcon.setY(100);
+            cardIcon.setFitWidth(150);
+            cardIcon.setPreserveRatio(true);
 
             StackPane box = new StackPane();
             StackPane stackPane = new StackPane();
-            box.getChildren().addAll(square, label);
+            box.getChildren().addAll(cardIcon);
             stackPane.getChildren().addAll(box);
             cards.getChildren().add(stackPane);
 
             currentDeck.getHand().add(currentDeck.getDrawList().get(0));
             currentDeck.getDrawList().remove(0);
 
-            stackPane.getChildren().forEach(node -> {
-                makeDraggable(node);
-                makeDroppable(node);
-            });
+            stackPane.getChildren().forEach((this::makeDraggable));
+            stackPane.getChildren().forEach((this::makeDroppable));
         } catch (IndexOutOfBoundsException e) {
 
         }
