@@ -196,7 +196,27 @@ public class BattleScreenController extends ControllerBase implements Initializa
             stackPane.getChildren().forEach(this::makeDroppable);
         }
     }
+    private void updatePile() {
+        activeBox.getChildren().clear();
+        for (Card card : activePile.getPile()) {
+            Image cardImage = new Image("Images/" + card.getName() + ".png");
+            ImageView cardIcon = new ImageView(cardImage);
+            cardIcon.setFitWidth(150);
+            cardIcon.setPreserveRatio(true);
 
+            StackPane box = new StackPane();
+            StackPane stackPane = new StackPane();
+            box.getChildren().addAll(cardIcon);
+            stackPane.getChildren().addAll(box);
+            activeBox.getChildren().add(stackPane);
+
+            stackPane.setOnMouseEntered(e -> {
+                activeStackPane = stackPane;
+            });
+            stackPane.getChildren().forEach(this::makeDraggable);
+            stackPane.getChildren().forEach(this::makeDroppable);
+        }
+    }
 
     @FXML
     public void detectRelease1(javafx.scene.input.MouseEvent mouseEvent) {
@@ -268,6 +288,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
                 });
                 currentDeck.getHand().add(activePile.getPile().get(tempint));
                 activePile.getPile().remove(tempint);
+                updatePile();
                 updateHand();
                 resetBools(mouseEvent);
             } catch (IndexOutOfBoundsException i) {
