@@ -32,7 +32,7 @@ public class OptionsScreenController extends ControllerBase implements Initializ
     }
 
     private MediaPlayer mediaPlayer;
-    private static final String MEDIA_URL = new File("Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/src/Music/bgmusic.mp3")
+    private static final String MEDIA_URL = new File("../Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/src/Music/bgmusic.mp3")
             .toURI().toString();
 
     @Override
