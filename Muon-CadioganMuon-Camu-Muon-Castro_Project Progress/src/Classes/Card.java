@@ -10,6 +10,7 @@ package Classes;/*
  */
 public class Card {
     protected String name;
+    private int numberInHand = 0;
 
     public Card(String type, int i, int i1, int i2) {
         this.name = type;
@@ -28,4 +29,7 @@ public class Card {
     public String getName() {
         return name;
     }
+
+    public void setNumberInHand(int num) {numberInHand = num;}
+    public int getNumberInHand() {return numberInHand;}
 }

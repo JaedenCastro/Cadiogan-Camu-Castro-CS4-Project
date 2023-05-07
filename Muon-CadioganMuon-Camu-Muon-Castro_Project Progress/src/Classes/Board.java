@@ -11,35 +11,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Board {
-    private ArrayList<Card> statPile;
-    private ArrayList<Card> conditionPile;
-    private ArrayList<Card> controlFlowPile;
-    
+    private ArrayList<Card> pile;
+
     public Board() {
-        statPile = new ArrayList<>(0);
-        conditionPile = new ArrayList<>(0);
-        controlFlowPile = new ArrayList<>(0);
+        pile = new ArrayList<>(0);
     }
-    
-    
+
+
     /**
      * @return the statPile
      */
-    public ArrayList<Card> getStatPile() {
-        return statPile;
+    public ArrayList<Card> getPile() {
+        return pile;
     }
 
-    /**
-     * @return the conditionPile
-     */
-    public ArrayList<Card> getConditionPile() {
-        return conditionPile;
-    }
-
-    /**
-     * @return the controlFlowPile
-     */
-    public ArrayList<Card> getControlFlowPile() {
-        return controlFlowPile;
-    }
 }

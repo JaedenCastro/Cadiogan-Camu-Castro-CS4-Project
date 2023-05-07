@@ -42,21 +42,21 @@ public class BattleScreenController extends ControllerBase implements Initializa
     Card Defend = new Card("Defend", 0, 0, 5);
     Card Heal = new Card ("Heal",0, 0, 4);
     int pile1Int=0, pile2Int=1, pile3Int=2;
+    int cardNum=0, activeCardNum=0;
     @FXML
     private Text hpLabel, playerDisplay;
     @FXML private HBox cards;
     @FXML private HBox pile1, pile2, pile3;
-    private HBox activePile;
+    private HBox activeBox;
     Boolean counter = true;
     Boolean pileBool = false, handBool = false;
     Player currentPlayer = player1;
     Deck currentDeck = p1Deck;
+    Board statPile = new Board(); Board conditionPile = new Board(); Board controlFlowPile = new Board(); Board activePile = new Board();
+    StackPane activeStackPane;
     @FXML
     public void back (ActionEvent event) throws IOException {
         newScreen(event, "PauseScreen.fxml");
-    }
-    private void dropTarget () {
-
     }
     private void Draw () {
         try {
@@ -67,13 +67,18 @@ public class BattleScreenController extends ControllerBase implements Initializa
             cardIcon.setY(100);
             cardIcon.setFitWidth(150);
             cardIcon.setPreserveRatio(true);
-
             StackPane box = new StackPane();
             StackPane stackPane = new StackPane();
             box.getChildren().addAll(cardIcon);
             stackPane.getChildren().addAll(box);
             cards.getChildren().add(stackPane);
 
+            System.out.println( "activeStackPane ==>" + activeStackPane );
+
+
+            stackPane.setOnMouseEntered(e -> {
+                activeStackPane = stackPane;
+            });
             currentDeck.getHand().add(currentDeck.getDrawList().get(0));
             currentDeck.getDrawList().remove(0);
 
@@ -81,6 +86,13 @@ public class BattleScreenController extends ControllerBase implements Initializa
             stackPane.getChildren().forEach((this::makeDroppable));
         } catch (IndexOutOfBoundsException e) {
 
+        }
+    }
+    public  void resetCardNum(HBox hbox) {
+        int cardNum = 0;
+        for (Node n : hbox.getChildren()) {
+            n.setUserData(new Integer(cardNum));
+            cardNum++;
         }
     }
     private double startX, originalTranslateX;
@@ -121,81 +133,154 @@ public class BattleScreenController extends ControllerBase implements Initializa
 
         }); // bug with letting go outside of a pile which causes the next time you hover over a pile to create a card instance
     }
-    public void addToPile (HBox pile) {
-        Rectangle square = new Rectangle();
-        square.setWidth(75);
-        square.setHeight(100);
-        square.setFill(Color.WHITE);
-        square.setStroke(Color.BLACK);
+    public void addToPile(HBox pile, Board board) {
         try {
-            Label label = new Label(currentDeck.getHand().get(0).getName());
+            resetCardNum(cards);
+
+            int tempint = ((Integer) (activeStackPane.getUserData())).intValue();
+
+            Image cardA = new Image("Images/" + currentDeck.getHand().get(tempint).getName() + ".png");
+            ImageView cardIcon = new ImageView();
+            cardIcon.setImage(cardA);
+            cardIcon.setX(100);
+            cardIcon.setY(100);
+            cardIcon.setFitWidth(150);
+            cardIcon.setPreserveRatio(true);
             StackPane box = new StackPane();
             StackPane stackPane = new StackPane();
-            box.getChildren().addAll(square, label);
+            box.getChildren().addAll(cardIcon);
             stackPane.getChildren().addAll(box);
             pile.getChildren().add(stackPane);
+
             ObservableList<Node> children = cards.getChildren();
             children.remove(children.size() - 1);
             stackPane.getChildren().forEach(node -> {
                 makeDraggable(node);
                 makeDroppable(node);
             });
+            stackPane.setOnMouseEntered(e -> {
+                activeStackPane = stackPane;
+                System.out.println( "Draw activeStackPane = " + activeStackPane );
+            });
+            board.getPile().add(currentDeck.getHand().get(tempint));
+            currentDeck.getHand().remove(tempint);
+
+            resetCardNum(activeBox);
+
+            updateHand();
+
         } catch (IndexOutOfBoundsException i) {
-
         }
-
     }
+
+    private void updateHand() {
+        cards.getChildren().clear();
+
+        for (Card card : currentDeck.getHand()) {
+            Image cardImage = new Image("Images/" + card.getName() + ".png");
+            ImageView cardIcon = new ImageView(cardImage);
+            cardIcon.setFitWidth(150);
+            cardIcon.setPreserveRatio(true);
+
+            StackPane box = new StackPane();
+            StackPane stackPane = new StackPane();
+            box.getChildren().addAll(cardIcon);
+            stackPane.getChildren().addAll(box);
+            cards.getChildren().add(stackPane);
+
+            stackPane.setOnMouseEntered(e -> {
+                activeStackPane = stackPane;
+            });
+
+            stackPane.getChildren().forEach(this::makeDraggable);
+            stackPane.getChildren().forEach(this::makeDroppable);
+        }
+    }
+
+
+    @FXML
     public void detectRelease1(javafx.scene.input.MouseEvent mouseEvent) {
-        activePile = pile1;
+        activeBox = pile1;
+        activePile = statPile;
         if (pileBool) {
             pileBool = false;
-            addToPile(pile1);
+            addToPile(pile1, statPile);
         }
     }
+
+    @FXML
     public void detectRelease2(javafx.scene.input.MouseEvent mouseEvent) {
-        activePile = pile2;
+        activeBox = pile2;
+        activePile = conditionPile;
         if (pileBool) {
             pileBool = false;
-            addToPile(pile2);
+            addToPile(pile2, conditionPile);
         }
     }
+
+    @FXML
     public void detectRelease3(javafx.scene.input.MouseEvent mouseEvent) {
-        activePile = pile3;
+        activeBox = pile3;
+        activePile = controlFlowPile;
         handBool = false;
         if (pileBool) {
             pileBool = false;
-            addToPile(pile3);
+            addToPile(pile3, controlFlowPile);
         }
     }
+
+    @FXML
     public void detectReleaseHand(javafx.scene.input.MouseEvent mouseEvent) {
         pileBool = false;
 
         if (handBool) {
-            System.out.println(handBool);
             handBool = false;
-            Rectangle square = new Rectangle();
-            square.setWidth(75);
-            square.setHeight(100);
-            square.setFill(Color.WHITE);
-            square.setStroke(Color.BLACK);
             try {
-                Label label = new Label(currentDeck.getHand().get(0).getName());
+                resetCardNum(activeBox);
+                int tempint = 0;
+
+                try {
+                    tempint = ((Integer) (activeStackPane.getUserData())).intValue();
+                }  catch(Exception e) {
+                    tempint = 0;
+                }
+                Image cardA = new Image("Images/" + activePile.getPile().get(tempint).getName() + ".png");
+                ImageView cardIcon = new ImageView();
+                cardIcon.setImage(cardA);
+                cardIcon.setX(100);
+                cardIcon.setY(100);
+                cardIcon.setFitWidth(150);
+                cardIcon.setPreserveRatio(true);
                 StackPane box = new StackPane();
                 StackPane stackPane = new StackPane();
-                box.getChildren().addAll(square, label);
+                box.getChildren().addAll(cardIcon);
                 stackPane.getChildren().addAll(box);
                 cards.getChildren().add(stackPane);
-                ObservableList<Node> children = activePile.getChildren();
+
+                ObservableList<Node> children = activeBox.getChildren();
                 children.remove(children.size() - 1);
                 stackPane.getChildren().forEach(node -> {
                     makeDraggable(node);
                     makeDroppable(node);
                 });
+                stackPane.setOnMouseEntered(e -> {
+                    activeStackPane = stackPane;
+                });
+                currentDeck.getHand().add(activePile.getPile().get(tempint));
+                activePile.getPile().remove(tempint);
+                updateHand();
+                resetBools(mouseEvent);
             } catch (IndexOutOfBoundsException i) {
 
+            } catch (NullPointerException n) {
+                System.out.print( "detectReleaseHand: activeStackPane=  ");
+                System.out.println(activeStackPane);
+                System.out.print(" aSP.getUserData()=  ");
+                System.out.println(activeStackPane.getUserData() );
             }
         }
     }
+
     public void resetBools(javafx.scene.input.MouseEvent mouseEvent) {
         handBool = false;
         pileBool = false;
@@ -212,6 +297,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
         } catch (IndexOutOfBoundsException e) {
 
         }
+        activeCardNum = 0;
     }
     @FXML
     public void setPlayer() {
@@ -265,7 +351,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
         p2Deck.addToDeck(Heal);
         p2Deck.addToDeck(Strike);
         p2Deck.addToDeck(Defend);
-
+        activePile = statPile;
     }
 
 }
