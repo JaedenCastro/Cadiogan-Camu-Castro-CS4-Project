@@ -4,19 +4,32 @@ package Classes;/*
  * and open the template in the editor.
  */
 
+import java.util.ArrayList;
+
 /**
  *
  * @author MUON
  */
 public class Player {
-    private int health, maxHP, block, maxBlock;
+    private String name;
+    private int health;
+    private int maxHP;
+    private int block;
+    private int maxBlock;
     private Deck deck;
-    
-    public Player(int maxHP, int health, Deck deck) {
+    private static ArrayList<Player> Players = new ArrayList<>();
+    public Player(String name, int maxHP, int health, Deck deck) {
+        this.name = name;
         this.maxHP = 100;
-        this.health = health;
+        this.setHealth(health);
         this.deck = deck;
+        Players.add(this);
     }
+
+    public static ArrayList<Player> getPlayers() {
+        return Players;
+    }
+
     public int getHealth() {
         return health;
     }
@@ -32,8 +45,21 @@ public class Player {
     public void setDeck(Card cardsAvailable) {
         this.deck = deck;
     }
-    
 
 
-    
+    public int getBlock() {
+        return block;
+    }
+
+    public void setBlock(int block) {
+        this.block = block;
+    }
+
+    public int getMaxHP() {
+        return maxHP;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

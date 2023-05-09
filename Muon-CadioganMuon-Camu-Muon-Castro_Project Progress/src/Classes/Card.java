@@ -12,15 +12,15 @@ public class Card {
     protected String name;
     private int numberInHand = 0;
 
-    public Card(String type, int i, int i1, int i2) {
+    public Card(String type) {
         this.name = type;
     }
+
+
     public Card properties(Card c) {
         return c;
     }
-    public Card execute(Card c) {
-        return c;
-    }
+
 
     public void setType(String type) {
         this.name = type;
@@ -32,4 +32,5 @@ public class Card {
 
     public void setNumberInHand(int num) {numberInHand = num;}
     public int getNumberInHand() {return numberInHand;}
+    public void play(Card c, Player p) {}
 }

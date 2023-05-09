@@ -29,12 +29,6 @@ public class Deck {
         getHand().add(deck.get(0)); //adds 1st element of cardList to the end of Hand
         deck.remove(0); // 1st element is 1st card to be drawn
     }
-    public Card play(Card c) {
-        c.execute(c);
-        getDiscardList().add(c);
-        getHand().remove(c);
-        return c;
-    }
     public void shuffle() {
         Collections.shuffle(discardList);
         for (Card a: discardList) {

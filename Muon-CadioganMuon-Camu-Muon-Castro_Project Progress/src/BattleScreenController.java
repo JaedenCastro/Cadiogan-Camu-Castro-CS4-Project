@@ -3,31 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXML2.java to edit this template
  */
 
-import java.awt.*;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import Classes.*;
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
 
 /**
  *
@@ -36,13 +25,12 @@ import javafx.scene.input.TransferMode;
 public class BattleScreenController extends ControllerBase implements Initializable {
     Deck p1Deck = new Deck();
     Deck p2Deck = new Deck();
-    Player player1 = new Player(100, 100, p1Deck);
-    Player player2 = new Player(100,100, p2Deck);
-    Card Strike = new Card("Strike", 0, 0, 6);
-    Card Defend = new Card("Defend", 0, 0, 5);
-    Card Heal = new Card ("Heal",0, 0, 4);
-    int pile1Int=0, pile2Int=1, pile3Int=2;
-    int cardNum=0, activeCardNum=0;
+    Player player1 = new Player("Player 1",100, 100, p1Deck);
+    Player player2 = new Player("Player 2",100,100, p2Deck);
+    Stat Strike = new Stat("Strike");
+    Stat Defend = new Stat("Defend");
+    Stat Heal = new Stat ("Heal");
+    int cardNum=0;
     @FXML
     private Text hpLabel, playerDisplay;
     @FXML private HBox cards;
@@ -51,9 +39,11 @@ public class BattleScreenController extends ControllerBase implements Initializa
     Boolean counter = true;
     Boolean pileBool = false, handBool = false;
     Player currentPlayer = player1;
+    Player inactivePlayer = player2;
     Deck currentDeck = p1Deck;
     Board statPile = new Board(); Board conditionPile = new Board(); Board controlFlowPile = new Board(); Board activePile = new Board();
     StackPane activeStackPane;
+    int energy = 0;
     @FXML
     public void back (ActionEvent event) throws IOException {
         newScreen(event, "PauseScreen.fxml");
@@ -73,7 +63,6 @@ public class BattleScreenController extends ControllerBase implements Initializa
             stackPane.getChildren().addAll(box);
             cards.getChildren().add(stackPane);
 
-            System.out.println( "activeStackPane ==>" + activeStackPane );
 
 
             stackPane.setOnMouseEntered(e -> {
@@ -160,7 +149,6 @@ public class BattleScreenController extends ControllerBase implements Initializa
             });
             stackPane.setOnMouseEntered(e -> {
                 activeStackPane = stackPane;
-                System.out.println( "Draw activeStackPane = " + activeStackPane );
             });
             board.getPile().add(currentDeck.getHand().get(tempint));
             currentDeck.getHand().remove(tempint);
@@ -294,10 +282,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
             } catch (IndexOutOfBoundsException i) {
 
             } catch (NullPointerException n) {
-                System.out.print( "detectReleaseHand: activeStackPane=  ");
-                System.out.println(activeStackPane);
-                System.out.print(" aSP.getUserData()=  ");
-                System.out.println(activeStackPane.getUserData() );
+
             }
         }
     }
@@ -318,12 +303,13 @@ public class BattleScreenController extends ControllerBase implements Initializa
         } catch (IndexOutOfBoundsException e) {
 
         }
-        activeCardNum = 0;
+        cardNum = 0;
     }
     @FXML
     public void setPlayer() {
         if (!counter) {
             currentPlayer = player1;
+            
             currentDeck = p1Deck;
             playerDisplay.setText("Player 1");
         } else {
@@ -337,15 +323,13 @@ public class BattleScreenController extends ControllerBase implements Initializa
     @FXML
     public void startTurn (ActionEvent event) throws IOException {
         try {
-
             for (int i = 0; i < 5; i++) {
                 Draw();
             }
-
-
         } catch (IndexOutOfBoundsException e) {
 
         }
+        energy = 4;
     }
     @FXML
     public void endTurn (ActionEvent event) throws IOException {
@@ -354,9 +338,37 @@ public class BattleScreenController extends ControllerBase implements Initializa
             for (int x = 0; x < size; x++ ) {
                 Discard();
             }
+            clearPiles();
+
             setPlayer();
         } catch (IndexOutOfBoundsException e) {
 
+        }
+    }
+    private  void clearPiles () {
+        ObservableList<Node> children = pile1.getChildren();
+        int count = pile1.getChildren().size();
+        for (int item = 0; item < count; item++) {
+            children.remove(0);
+            statPile.getPile().get(0).play(statPile.getPile().get(0), currentPlayer);
+            currentDeck.getDrawList().add(statPile.getPile().get(0));
+            statPile.getPile().remove(0);
+        }
+        children = pile2.getChildren();
+        count = pile2.getChildren().size();
+        for (int item = 0; item < count; item++) {
+            children.remove(0);
+            // conditionPile.getPile().get(0).play(); // TO BE IMPLEMENTED
+            currentDeck.getDrawList().add(conditionPile.getPile().get(0));
+            conditionPile.getPile().remove(0);
+        }
+        children = pile3.getChildren();
+        count = pile3.getChildren().size();
+        for (int item = 0; item < count; item++) {
+            children.remove(0);
+            // controlFlowPile.getPile().get(0).play(); // TO BE IMPLEMENTED
+            currentDeck.getDrawList().add(controlFlowPile.getPile().get(0));
+            controlFlowPile.getPile().remove(0);
         }
     }
     @Override
