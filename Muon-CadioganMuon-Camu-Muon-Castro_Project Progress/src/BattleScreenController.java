@@ -32,7 +32,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
     Stat Heal = new Stat ("Heal");
     int cardNum=0;
     @FXML
-    private Text hpLabel, playerDisplay;
+    private Text hpLabel, playerDisplay, blockLabel, eHpLabel;
     @FXML private HBox cards;
     @FXML private HBox pile1, pile2, pile3;
     private HBox activeBox;
@@ -309,15 +309,18 @@ public class BattleScreenController extends ControllerBase implements Initializa
     public void setPlayer() {
         if (!counter) {
             currentPlayer = player1;
-            
+            inactivePlayer = player2;
             currentDeck = p1Deck;
             playerDisplay.setText("Player 1");
         } else {
             currentPlayer = player2;
+            inactivePlayer = player1;
             currentDeck = p2Deck;
             playerDisplay.setText("Player 2");
         }
         hpLabel.setText(Integer.toString(currentPlayer.getHealth())+"/100");
+        // blockLabel.setText(Integer.toString(inactivePlayer.getBlock()));
+        eHpLabel.setText(Integer.toString(inactivePlayer.getHealth())+"/100");
         counter = !counter;
     }
     @FXML
