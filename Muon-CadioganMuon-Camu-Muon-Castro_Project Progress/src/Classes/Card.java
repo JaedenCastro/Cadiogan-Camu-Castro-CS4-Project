@@ -9,11 +9,11 @@ package Classes;/*
  * @author MUON
  */
 public class Card {
-    protected String name;
+    protected String name, type;
     private int numberInHand = 0;
 
-    public Card(String type) {
-        this.name = type;
+    public Card(String name) {
+        this.name = name;
     }
 
 
@@ -33,4 +33,7 @@ public class Card {
     public void setNumberInHand(int num) {numberInHand = num;}
     public int getNumberInHand() {return numberInHand;}
     public void play(Card c, Player p) {}
+    public String getType() {
+        return type;
+    }
 }

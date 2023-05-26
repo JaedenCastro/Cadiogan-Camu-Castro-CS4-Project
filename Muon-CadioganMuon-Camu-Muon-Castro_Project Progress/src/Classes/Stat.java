@@ -2,8 +2,9 @@ package Classes;
 
 public class Stat extends Card{
     private float multiplier;
-    public Stat(String type) {
-        super(type);
+    private String type = "Stat";
+    public Stat(String name) {
+        super(name);
     }
 @Override
     public void play(Card c, Player p) { // make sure that it is the target player in the 2nd field
@@ -48,5 +49,9 @@ public class Stat extends Card{
             p.setHealth(p.getMaxHP());
         }
         System.out.println(p.getName() + " Healed for 3!" );
+    }
+
+    public String getType() {
+        return type;
     }
 }

@@ -87,6 +87,13 @@ public class BattleScreenController extends ControllerBase implements Initializa
     private double startX, originalTranslateX;
     private double startY, originalTranslateY;
 
+    /*
+
+    This code is still kind of buggy, for example the card might suddenly be let go
+    However, I think it's mostly bug free apart from my mouse letting go of the card sometimes
+    At this point I think it's a hardware issue
+
+     */
     private void makeDraggable(Node node) {
         node.setOnMousePressed(e -> {
             startX = e.getSceneX() - node.getTranslateX();
@@ -113,7 +120,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
             pileBool = true;
             handBool = true;
 
-        });
+        }); // bug with letting go outside of a pile which causes the next time you hover over a pile to create a card instance
     }
     public void addToPile(HBox pile, Board board) {
         try {
@@ -201,9 +208,16 @@ public class BattleScreenController extends ControllerBase implements Initializa
 
     @FXML
     public void detectRelease1(javafx.scene.input.MouseEvent mouseEvent) {
+        resetCardNum(cards);
+        int tempint = 0;
+        try {
+            tempint = ((Integer) (activeStackPane.getUserData())).intValue();
+        } catch (NullPointerException n) {
+
+        }
         activeBox = pile1;
         activePile = statPile;
-        if (pileBool) {
+        if (pileBool && currentDeck.getHand().get(tempint).getType().equalsIgnoreCase("Stat")) {
             pileBool = false;
             addToPile(pile1, statPile);
         }
@@ -211,9 +225,16 @@ public class BattleScreenController extends ControllerBase implements Initializa
 
     @FXML
     public void detectRelease2(javafx.scene.input.MouseEvent mouseEvent) {
+        resetCardNum(cards);
+        int tempint = 0;
+        try {
+            tempint = ((Integer) (activeStackPane.getUserData())).intValue();
+        } catch (NullPointerException n) {
+
+        }
         activeBox = pile2;
         activePile = conditionPile;
-        if (pileBool) {
+        if (pileBool&&currentDeck.getHand().get(tempint).getType().equalsIgnoreCase("Condition")) {
             pileBool = false;
             addToPile(pile2, conditionPile);
         }
@@ -221,10 +242,17 @@ public class BattleScreenController extends ControllerBase implements Initializa
 
     @FXML
     public void detectRelease3(javafx.scene.input.MouseEvent mouseEvent) {
+        resetCardNum(cards);
+        int tempint = 0;
+        try {
+            tempint = ((Integer) (activeStackPane.getUserData())).intValue();
+        } catch (NullPointerException n) {
+
+        }
         activeBox = pile3;
         activePile = controlFlowPile;
         handBool = false;
-        if (pileBool) {
+        if (pileBool&&currentDeck.getHand().get(tempint).getType().equalsIgnoreCase("ControlFlow")) {
             pileBool = false;
             addToPile(pile3, controlFlowPile);
         }
@@ -312,7 +340,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
             playerDisplay.setText("Player 2");
         }
         hpLabel.setText(Integer.toString(currentPlayer.getHealth())+"/100");
-        blockLabel.setText(Integer.toString(inactivePlayer.getBlock()));
+        // blockLabel.setText(Integer.toString(inactivePlayer.getBlock()));
         eHpLabel.setText(Integer.toString(inactivePlayer.getHealth())+"/100");
         counter = !counter;
     }

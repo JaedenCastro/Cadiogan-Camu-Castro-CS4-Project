@@ -1,12 +1,21 @@
 package Classes;
 
-public class ControlFlow {
+public class ControlFlow extends Card {
     private int property;
-	
-	public int getProperty() {
+    private String type = "ControlFlow";
+
+    public ControlFlow(String name) {
+        super(name);
+    }
+
+    public int getProperty() {
         return property;
     }
 	public void modifyStat() {
 		
 	}
+
+    public String getType() {
+        return type;
+    }
 }

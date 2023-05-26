@@ -28,7 +28,7 @@
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" />
                 <Button mnemonicParsing="false" onAction="#back" text="Pause" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="P2 Cards (Face Down)" GridPane.columnIndex="1" />
-            <GridPane>
+            <GridPane onMouseEntered="#resetBools">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -63,17 +63,17 @@
                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pile 1" />
                   <HBox fx:id="pile1" onMouseEntered="#detectRelease1" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="416.0">
                      <children>
-                        <HBox fx:id="pile2" onMouseEntered="#detectRelease2" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="496.0" />
+                        <HBox fx:id="pile2" onMouseEntered="#detectRelease1" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="496.0" />
                      </children></HBox>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pile 2" />
-                  <HBox fx:id="pile3" onMouseEntered="#detectRelease3" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="425.0" />
+                  <HBox fx:id="pile3" onMouseEntered="#detectRelease2" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="425.0" />
                </children>
             </StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
+            <StackPane onMouseEntered="#detectRelease3" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pile 3" />
                </children>
