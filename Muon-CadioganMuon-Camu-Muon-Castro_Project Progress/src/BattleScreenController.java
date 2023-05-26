@@ -30,6 +30,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
     Stat Strike = new Stat("Strike");
     Stat Defend = new Stat("Defend");
     Stat Heal = new Stat ("Heal");
+    Condition ifelse = new Condition("ifelse");
     int cardNum=0;
     @FXML
     private Text hpLabel, playerDisplay, blockLabel, eHpLabel;
@@ -234,7 +235,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
         }
         activeBox = pile2;
         activePile = conditionPile;
-        if (pileBool&&currentDeck.getHand().get(tempint).getType().equalsIgnoreCase("Condition")) {
+        if (pileBool && currentDeck.getHand().get(tempint).getType().equalsIgnoreCase("Condition")) {
             pileBool = false;
             addToPile(pile2, conditionPile);
         }
@@ -252,7 +253,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
         activeBox = pile3;
         activePile = controlFlowPile;
         handBool = false;
-        if (pileBool&&currentDeck.getHand().get(tempint).getType().equalsIgnoreCase("ControlFlow")) {
+        if (pileBool && currentDeck.getHand().get(tempint).getType().equalsIgnoreCase("ControlFlow")) {
             pileBool = false;
             addToPile(pile3, controlFlowPile);
         }
@@ -340,7 +341,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
             playerDisplay.setText("Player 2");
         }
         hpLabel.setText(Integer.toString(currentPlayer.getHealth())+"/100");
-        // blockLabel.setText(Integer.toString(inactivePlayer.getBlock()));
+        blockLabel.setText(Integer.toString(inactivePlayer.getBlock()));
         eHpLabel.setText(Integer.toString(inactivePlayer.getHealth())+"/100");
         counter = !counter;
     }
@@ -370,19 +371,11 @@ public class BattleScreenController extends ControllerBase implements Initializa
         }
     }
     private  void clearPiles () {
-        ObservableList<Node> children = pile1.getChildren();
-        int count = pile1.getChildren().size();
+        ObservableList<Node> children = pile2.getChildren();
+        int count = pile2.getChildren().size();
         for (int item = 0; item < count; item++) {
             children.remove(0);
-            statPile.getPile().get(0).play(statPile.getPile().get(0), currentPlayer);
-            currentDeck.getDrawList().add(statPile.getPile().get(0));
-            statPile.getPile().remove(0);
-        }
-        children = pile2.getChildren();
-        count = pile2.getChildren().size();
-        for (int item = 0; item < count; item++) {
-            children.remove(0);
-            // conditionPile.getPile().get(0).play(); // TO BE IMPLEMENTED
+            conditionPile.getPile().get(0).play(conditionPile.getPile().get(0), statPile); // TO BE IMPLEMENTED
             currentDeck.getDrawList().add(conditionPile.getPile().get(0));
             conditionPile.getPile().remove(0);
         }
@@ -394,6 +387,14 @@ public class BattleScreenController extends ControllerBase implements Initializa
             currentDeck.getDrawList().add(controlFlowPile.getPile().get(0));
             controlFlowPile.getPile().remove(0);
         }
+        children = pile1.getChildren();
+        count = pile1.getChildren().size();
+        for (int item = 0; item < count; item++) {
+            children.remove(0);
+            statPile.getPile().get(0).play(statPile.getPile().get(0), currentPlayer);
+            currentDeck.getDrawList().add(statPile.getPile().get(0));
+            statPile.getPile().remove(0);
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -401,14 +402,15 @@ public class BattleScreenController extends ControllerBase implements Initializa
         p1Deck.addToDeck(Strike);
         p1Deck.addToDeck(Defend);
         p1Deck.addToDeck(Defend);
+        p1Deck.addToDeck(ifelse);
         p1Deck.addToDeck(Heal);
 
         p2Deck.addToDeck(Heal);
         p2Deck.addToDeck(Heal);
         p2Deck.addToDeck(Heal);
+        p2Deck.addToDeck(ifelse);
         p2Deck.addToDeck(Strike);
         p2Deck.addToDeck(Defend);
-        activePile = statPile;
     }
 
 }

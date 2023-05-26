@@ -11,7 +11,8 @@ package Classes;/*
 public class Card {
     protected String name, type;
     private int numberInHand = 0;
-
+    protected float multiplier=1;
+    protected  int interatedCount=1;
     public Card(String name) {
         this.name = name;
     }
@@ -35,5 +36,17 @@ public class Card {
     public void play(Card c, Player p) {}
     public String getType() {
         return type;
+    }
+
+    public void play(Card c, Board b) {
+
+    }
+
+    public float getMultiplier() {
+        return multiplier;
+    }
+
+    public void setMultiplier(float multiplier) {
+        this.multiplier = multiplier;
     }
 }

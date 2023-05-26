@@ -7,15 +7,19 @@ public class Condition extends Card {
 	public Condition(String name) {
 		super(name);
 	}
-
-	public int getProperty() {
-        	return property;
-    	}
-	
-	public void modifyCF(){
-		
+	@Override
+	public void play(Card c, Board b) { // make sure that it is the target player in the 2nd field
+		switch(c.getName()) {
+			case "if else":
+				ifelse(b);
+				break;
+		}
 	}
-
+	public void ifelse(Board b){
+		if (b.getPile().size() % 2 == 0) {
+			b.getPile().get(0).setMultiplier(2);
+		}
+	}
 	public String getType() {
 		return type;
 	}

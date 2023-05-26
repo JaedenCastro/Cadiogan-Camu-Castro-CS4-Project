@@ -27,7 +27,6 @@
             <children>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" />
                 <Button mnemonicParsing="false" onAction="#back" text="Pause" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="P2 Cards (Face Down)" GridPane.columnIndex="1" />
             <GridPane onMouseEntered="#resetBools">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -60,22 +59,20 @@
             <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pile 1" />
-                  <HBox fx:id="pile1" onMouseEntered="#detectRelease1" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="416.0">
-                     <children>
-                        <HBox fx:id="pile2" onMouseEntered="#detectRelease1" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="496.0" />
-                     </children></HBox>
+                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stat Card Pile" />
+                  <HBox fx:id="pile1" onMouseEntered="#detectRelease1" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="416.0" />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pile 2" />
-                  <HBox fx:id="pile3" onMouseEntered="#detectRelease2" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="425.0" />
+                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Condition Card Pile" />
+                  <HBox fx:id="pile2" onMouseEntered="#detectRelease2" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="425.0" />
                </children>
             </StackPane>
             <StackPane onMouseEntered="#detectRelease3" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pile 3" />
+                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control Flow Card Pile" />
+                  <HBox fx:id="pile3" onMouseEntered="#detectRelease1" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="496.0" />
                </children>
             </StackPane>
             </children>
@@ -111,7 +108,7 @@
             </AnchorPane>
                 <Pane onMouseEntered="#resetBools" prefHeight="450.0" prefWidth="234.0" style="-fx-border-color: #000000;">
                     <children>
-                        <Text layoutX="85.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" />
+                        <Text fx:id="playerDisplay" layoutX="85.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" />
                         <Button layoutX="72.0" layoutY="47.0" mnemonicParsing="false" onAction="#endTurn" prefHeight="64.0" prefWidth="104.0" text="End Turn" />
                     </children>
                 </Pane>
