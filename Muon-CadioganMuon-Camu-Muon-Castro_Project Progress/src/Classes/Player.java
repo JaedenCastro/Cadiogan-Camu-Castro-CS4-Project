@@ -13,9 +13,8 @@ import java.util.ArrayList;
 public class Player {
     private String name;
     private int health;
-    private int maxHP;
-    private int block;
-    private int maxBlock;
+    private static int maxHP = 100;
+    private int block=0;
     private Deck deck;
     private static ArrayList<Player> Players = new ArrayList<>();
     public Player(String name, int maxHP, int health, Deck deck) {

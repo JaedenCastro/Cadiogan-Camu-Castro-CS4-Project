@@ -25,6 +25,7 @@ public class Stat extends Card{
         if (targetPlayer.getBlock() > 0) {
             if (targetPlayer.getBlock() - 6 < 0) {
                 temp = 6 - targetPlayer.getBlock();
+                targetPlayer.setBlock(targetPlayer.getBlock() - 6 > 0 ? targetPlayer.getBlock()-6 : 0 );
             }
         }
         if (targetPlayer.getBlock() == 0) {
@@ -43,7 +44,7 @@ public class Stat extends Card{
     private void Heal(Player p) {
         if (p.getHealth() + 3 < p.getMaxHP()) {
             p.setHealth(p.getHealth()+3);
-        } else if (p.getHealth() + 3 > p.getMaxHP()) {
+        } else if (p.getHealth() + 3 >= p.getMaxHP()) {
             p.setHealth(p.getMaxHP());
         }
         System.out.println(p.getName() + " Healed for 3!" );

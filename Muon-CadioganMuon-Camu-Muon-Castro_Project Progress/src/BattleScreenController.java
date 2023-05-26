@@ -87,13 +87,6 @@ public class BattleScreenController extends ControllerBase implements Initializa
     private double startX, originalTranslateX;
     private double startY, originalTranslateY;
 
-    /*
-
-    This code is still kind of buggy, for example the card might suddenly be let go
-    However, I think it's mostly bug free apart from my mouse letting go of the card sometimes
-    At this point I think it's a hardware issue
-
-     */
     private void makeDraggable(Node node) {
         node.setOnMousePressed(e -> {
             startX = e.getSceneX() - node.getTranslateX();
@@ -120,7 +113,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
             pileBool = true;
             handBool = true;
 
-        }); // bug with letting go outside of a pile which causes the next time you hover over a pile to create a card instance
+        });
     }
     public void addToPile(HBox pile, Board board) {
         try {
@@ -319,7 +312,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
             playerDisplay.setText("Player 2");
         }
         hpLabel.setText(Integer.toString(currentPlayer.getHealth())+"/100");
-        // blockLabel.setText(Integer.toString(inactivePlayer.getBlock()));
+        blockLabel.setText(Integer.toString(inactivePlayer.getBlock()));
         eHpLabel.setText(Integer.toString(inactivePlayer.getHealth())+"/100");
         counter = !counter;
     }
