@@ -225,7 +225,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
         activePile = statPile;
         if (pileBool && currentDeck.getHand().get(tempint).getType().equalsIgnoreCase("Stat")) {
             pileBool = false;
-            addToPile(pile1, statPile);
+            addToPile(activeBox, activePile);
         }
     }
 
@@ -242,7 +242,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
         activePile = conditionPile;
         if (pileBool && currentDeck.getHand().get(tempint).getType().equalsIgnoreCase("Condition")) {
             pileBool = false;
-            addToPile(pile2, conditionPile);
+            addToPile(activeBox, activePile);
         }
     }
 
@@ -260,8 +260,11 @@ public class BattleScreenController extends ControllerBase implements Initializa
         handBool = false;
         if (pileBool && currentDeck.getHand().get(tempint).getType().equalsIgnoreCase("ControlFlow")) {
             pileBool = false;
-            addToPile(pile3, controlFlowPile);
+            addToPile(activeBox, activePile);
         }
+        activeBox = pile3;
+        activePile = controlFlowPile;
+
     }
 
     @FXML
@@ -306,6 +309,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
                 updatePile();
                 updateHand();
                 resetBools(mouseEvent);
+
             } catch (IndexOutOfBoundsException i) {
 
             } catch (NullPointerException n) {
@@ -343,12 +347,15 @@ public class BattleScreenController extends ControllerBase implements Initializa
             inactivePlayer = player1;
             currentDeck = p2Deck;
         }
+
         deckDisplay1.setText("Player 1 Draw list count:  " + p1Deck.getDeck().size());
         deckDisplay2.setText("Player 2 Draw list count:  " + p2Deck.getDeck().size());
+
         hpLabel.setText(currentPlayer.getHealth() +"/100");
         blockLabel.setText(Integer.toString(inactivePlayer.getBlock()));
         eHpLabel.setText(inactivePlayer.getHealth() +"/100");
         counter = !counter;
+
     }
     @FXML
     public void startTurn (ActionEvent event) throws IOException {
@@ -409,6 +416,9 @@ public class BattleScreenController extends ControllerBase implements Initializa
             setPlayer();
             currentPlayer.resetBlock();
             turn = 0;
+
+            setPlayer();
+
         } catch (IndexOutOfBoundsException e) {
 
         }

@@ -79,10 +79,10 @@
                   <HBox fx:id="pile2" onMouseEntered="#detectRelease2" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="496.0" />
                </children>
             </StackPane>
-            <StackPane onMouseEntered="#detectRelease3" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control Flow Card Pile" />
-                  <HBox fx:id="pile3" onMouseEntered="#detectRelease1" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="496.0" />
+                  <HBox fx:id="pile3" onMouseEntered="#detectRelease3" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="496.0" />
                </children>
             </StackPane>
             </children>

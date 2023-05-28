@@ -2,7 +2,7 @@ package Classes;
 
 public class ControlFlow extends Card {
     private int property;
-    private String type = "ControlFlow";
+    private static String type = "ControlFlow";
 
     public ControlFlow(String name) {
         super(name);
