@@ -49,12 +49,18 @@ public class MenuController extends ControllerBase implements Initializable  {
     public void showLogo(javafx.scene.input.MouseEvent mouseEvent) {
         logo.setOpacity((100));
     }
+    @FXML
+    private ImageView backgroundImage;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         Image img = new Image(getClass().getResourceAsStream("Images/Logo.png"));
         logo.setImage(img);
         logo.setOpacity((0));
+        Image bgImage = new Image(getClass().getResourceAsStream("Images/bg.png"));
+        backgroundImage.setImage(bgImage);
+        backgroundImage.setFitWidth(1920);
+        backgroundImage.setFitHeight(1000);
     }
 
 }
