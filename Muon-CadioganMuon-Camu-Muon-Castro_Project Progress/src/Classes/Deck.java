@@ -37,6 +37,10 @@ public class Deck {
         discardList.clear();
     }
 
+    public void drawShuffle(){
+        Collections.shuffle(drawList);
+    }
+
     /**
      * @return the cardList
      */
