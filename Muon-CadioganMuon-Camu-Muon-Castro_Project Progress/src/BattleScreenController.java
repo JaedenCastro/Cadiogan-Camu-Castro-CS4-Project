@@ -434,12 +434,12 @@ public class BattleScreenController extends ControllerBase implements Initializa
         for (int i = 0; i <= 10; i++){
             p2Deck.addToDeck(Heal);
         }
-        /*for (int i = 0; i <= 5; i++){
-            p2Deck.addToDeck(for);
+        for (int i = 0; i <= 5; i++){
+            p2Deck.addToDeck(forloop);
         }
         for (int i = 0; i <= 5; i++){
-            p1Deck.addToDeck(while);
-        }*/
+            p1Deck.addToDeck(whileloop);
+        }
         p1Deck.drawShuffle();
         p2Deck.drawShuffle();
     }
