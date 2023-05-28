@@ -18,17 +18,26 @@ public class ControlFlow extends Card {
     public String getType() {
         return type;
     }
-    public void play(Card c, Board b) { // make sure that it is the target player in the 2nd field
+    @Override
+    public void play(Card c, Board b, Player p) { // make sure that it is the target player in the 2nd field
         switch(c.getName()) {
             case "forloop":
                 forloop(b);
                 break;
             case "whileloop":
-                //whileloop(c);
+                whileloop(b,p);
                 break;
         }
     }
     public void forloop(Board b) {
         b.getPile().get(0).setIterateCount(4);
+    }
+    public void whileloop(Board b, Player p) {
+        if (p.getHealth()%2==0) {
+            b.getPile().get(0).setIterateCount(2);
+        } else {
+            b.getPile().get(0).setIterateCount(3);
+            b.getPile().get(1).setIterateCount(2);
+        }
     }
 }

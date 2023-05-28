@@ -384,7 +384,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
         count = pile3.getChildren().size();
         for (int item = 0; item < count; item++) {
             children.remove(0);
-            controlFlowPile.getPile().get(0).play(controlFlowPile.getPile().get(0), statPile); // TO BE IMPLEMENTED
+            controlFlowPile.getPile().get(0).play(controlFlowPile.getPile().get(0), statPile, currentPlayer);
             currentDeck.getDrawList().add(controlFlowPile.getPile().get(0));
             controlFlowPile.getPile().remove(0);
         }

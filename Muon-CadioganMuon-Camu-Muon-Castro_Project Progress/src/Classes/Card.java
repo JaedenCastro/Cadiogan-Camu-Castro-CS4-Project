@@ -42,6 +42,9 @@ public abstract class Card {
 
     }
 
+    public void play (Card c, Board b, Player p) {
+
+    }
     public float getMultiplier() {
         return multiplier;
     }
