@@ -31,6 +31,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
     Stat Defend = new Stat("Defend");
     Stat Heal = new Stat ("Heal");
     Condition ifelse = new Condition("ifelse");
+    ControlFlow forloop = new ControlFlow("forloop");
     int cardNum=0;
     @FXML
     private Text hpLabel, playerDisplay, blockLabel, eHpLabel;
@@ -375,7 +376,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
         int count = pile2.getChildren().size();
         for (int item = 0; item < count; item++) {
             children.remove(0);
-            conditionPile.getPile().get(0).play(conditionPile.getPile().get(0), statPile); // TO BE IMPLEMENTED
+            conditionPile.getPile().get(0).play(conditionPile.getPile().get(0), statPile);
             currentDeck.getDrawList().add(conditionPile.getPile().get(0));
             conditionPile.getPile().remove(0);
         }
@@ -383,7 +384,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
         count = pile3.getChildren().size();
         for (int item = 0; item < count; item++) {
             children.remove(0);
-            // controlFlowPile.getPile().get(0).play(); // TO BE IMPLEMENTED
+            controlFlowPile.getPile().get(0).play(controlFlowPile.getPile().get(0), statPile); // TO BE IMPLEMENTED
             currentDeck.getDrawList().add(controlFlowPile.getPile().get(0));
             controlFlowPile.getPile().remove(0);
         }
@@ -399,10 +400,11 @@ public class BattleScreenController extends ControllerBase implements Initializa
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         p1Deck.addToDeck(Strike);
+        p1Deck.addToDeck(forloop);
+        p1Deck.addToDeck(ifelse);
         p1Deck.addToDeck(Strike);
         p1Deck.addToDeck(Defend);
         p1Deck.addToDeck(Defend);
-        p1Deck.addToDeck(ifelse);
         p1Deck.addToDeck(Heal);
 
         p2Deck.addToDeck(Heal);

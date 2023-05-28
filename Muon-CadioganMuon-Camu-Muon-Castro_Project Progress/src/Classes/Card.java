@@ -8,11 +8,11 @@ package Classes;/*
  *
  * @author MUON
  */
-public class Card {
+public abstract class Card {
     protected String name, type;
-    private int numberInHand = 0;
+    protected int numberInHand = 0;
     protected float multiplier=1;
-    protected  int interatedCount=1;
+    protected int iterateCount=1;
     public Card(String name) {
         this.name = name;
     }
@@ -48,5 +48,13 @@ public class Card {
 
     public void setMultiplier(float multiplier) {
         this.multiplier = multiplier;
+    }
+
+    public int getIterateCount() {
+        return iterateCount;
+    }
+
+    public void setIterateCount(int iterateCount) {
+        this.iterateCount = iterateCount;
     }
 }

@@ -7,7 +7,7 @@ public class Stat extends Card{
     }
 @Override
     public void play(Card c, Player p) { // make sure that it is the target player in the 2nd field
-        for (int i =0; i < interatedCount; i++) {
+        for (int i = 0; i < iterateCount; i++) {
             switch(c.getName()) {
                 case "Strike":
                     Strike(p);
@@ -21,10 +21,10 @@ public class Stat extends Card{
             }
         }
         multiplier = 1;
+        iterateCount = 1;
     }
     private void Strike(Player p) {
         int attackValue = (int) (6.0*multiplier);
-
         int temp = 0;
         Player targetPlayer = p.getPlayers().get(p.getPlayers().size() - 1 - p.getPlayers().indexOf(p));
         if (targetPlayer.getBlock() > 0) {
@@ -54,7 +54,6 @@ public class Stat extends Card{
             p.setHealth(p.getMaxHP());
         }
         System.out.println(p.getName()+" Healed for "+ healValue + "!");
-
     }
 
     public String getType() {

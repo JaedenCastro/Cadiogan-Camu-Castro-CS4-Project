@@ -10,7 +10,7 @@ public class Condition extends Card {
 	@Override
 	public void play(Card c, Board b) { // make sure that it is the target player in the 2nd field
 		switch(c.getName()) {
-			case "if else":
+			case "ifelse":
 				ifelse(b);
 				break;
 		}
