@@ -49,7 +49,10 @@ public class Player {
     public int getBlock() {
         return block;
     }
-
+    public int resetBlock() {
+        block = 0;
+        return block;
+    }
     public void setBlock(int block) {
         this.block = block;
     }
