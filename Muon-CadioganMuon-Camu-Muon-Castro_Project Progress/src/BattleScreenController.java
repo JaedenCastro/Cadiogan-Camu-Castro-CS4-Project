@@ -12,6 +12,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
@@ -35,7 +37,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
     ControlFlow whileloop = new ControlFlow ("whileloop");
     int cardNum=0;
     @FXML
-    private Text hpLabel, playerDisplay, blockLabel, eHpLabel, deckDisplay1, deckDisplay2;
+    private Text hpLabel, playerDisplay, blockLabel, eHpLabel, deckDisplay1, deckDisplay2, currPlayerDisplay;
     @FXML private HBox cards;
     @FXML private HBox pile1, pile2, pile3;
     private HBox activeBox;
@@ -46,7 +48,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
     Deck currentDeck = p1Deck;
     Board statPile = new Board(); Board conditionPile = new Board(); Board controlFlowPile = new Board(); Board activePile = new Board();
     StackPane activeStackPane;
-    int energy = 0;
+    int turn = 0;
     @FXML
     public void back (ActionEvent event) throws IOException {
         newScreen(event, "PauseScreen.fxml");
@@ -333,22 +335,16 @@ public class BattleScreenController extends ControllerBase implements Initializa
     public void setPlayer() {
         if (!counter) {
             currentPlayer = player1;
-            currentPlayer.resetBlock();
             inactivePlayer = player2;
             currentDeck = p1Deck;
-            playerDisplay.setText("Player 1");
-            deckDisplay1.setText("Player 1 Draw list count:  " + p1Deck.getDeck().size());
-            deckDisplay2.setText("Player 2 Draw list count:  " + p2Deck.getDeck().size());
+
         } else {
             currentPlayer = player2;
-            currentPlayer.resetBlock();
             inactivePlayer = player1;
             currentDeck = p2Deck;
-            playerDisplay.setText("Player 2");
-            deckDisplay1.setText("Player 1 Draw list count:  " + p1Deck.getDeck().size());
-            deckDisplay2.setText("Player 2 Draw list count:  " + p2Deck.getDeck().size());
         }
-
+        deckDisplay1.setText("Player 1 Draw list count:  " + p1Deck.getDeck().size());
+        deckDisplay2.setText("Player 2 Draw list count:  " + p2Deck.getDeck().size());
         hpLabel.setText(currentPlayer.getHealth() +"/100");
         blockLabel.setText(Integer.toString(inactivePlayer.getBlock()));
         eHpLabel.setText(inactivePlayer.getHealth() +"/100");
@@ -356,15 +352,20 @@ public class BattleScreenController extends ControllerBase implements Initializa
     }
     @FXML
     public void startTurn (ActionEvent event) throws IOException {
-        try {
-            for (int i = 0; i < 5; i++) {
-                Draw();
+        if (turn == 0){
+            try {
+                for (int i = 0; i < 5; i++) {
+                    Draw();
+                }
+                playerDisplay.setText(inactivePlayer.getName());
+                currPlayerDisplay.setText(currentPlayer.getName());
+
             }
+            catch (IndexOutOfBoundsException e) {
 
-        } catch (IndexOutOfBoundsException e) {
-
+            }
         }
-        energy = 4;
+        turn++;
     }
     @FXML
     public void endTurn (ActionEvent event) throws IOException {
@@ -377,13 +378,42 @@ public class BattleScreenController extends ControllerBase implements Initializa
                 currentDeck.drawShuffle();
             }
             clearPiles();
+            if(currentPlayer.getHealth() <= 0){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, inactivePlayer.getName() + " has won! Would you like" +
+                        " to quit the game?", ButtonType.YES, ButtonType.NO);
+                alert.setTitle("Logout/Exit");
+                alert.setHeaderText(null);
+                ButtonType result = alert.showAndWait().get();
+                if (result == ButtonType.YES) {
 
+                    System.exit(0);
+                }
+                else {
+                    newScreen(event, "MenuScreen.fxml");
+                }
+            }
+            if(inactivePlayer.getHealth() <= 0 ){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, currentPlayer.getName() + " has won! Would you like" +
+                        " to quit the game?", ButtonType.YES, ButtonType.NO);
+                alert.setTitle("Logout/Exit");
+                alert.setHeaderText(null);
+                ButtonType result = alert.showAndWait().get();
+                if (result == ButtonType.YES) {
+
+                    System.exit(0);
+                }
+                else {
+                    newScreen(event, "MenuScreen.fxml");
+                }
+            }
             setPlayer();
+            currentPlayer.resetBlock();
+            turn = 0;
         } catch (IndexOutOfBoundsException e) {
 
         }
     }
-    private  void clearPiles () {
+    private void clearPiles () {
         ObservableList<Node> children = pile2.getChildren();
         int count = pile2.getChildren().size();
         for (int item = 0; item < count; item++) {
