@@ -91,7 +91,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button mnemonicParsing="false" onAction="#startTurn" prefHeight="45.0" prefWidth="81.0" text="Start Turn" />
+                        <Button fx:id="startturn" mnemonicParsing="false" onAction="#startTurn" prefHeight="45.0" prefWidth="81.0" text="Start Turn" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="      HP:" textAlignment="RIGHT" wrappingWidth="46.13671875" GridPane.rowIndex="1" />
                         <Text fx:id="hpLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="100/100" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <ImageView accessibleText="hp" fitHeight="26.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
@@ -99,7 +99,7 @@
                         <Image url="@../Images/HP.png" />
                      </image>
                   </ImageView>
-                        <Button mnemonicParsing="false" onAction="#endTurn" prefHeight="50.0" prefWidth="77.0" text="End Turn" GridPane.columnIndex="1" />
+                        <Button fx:id="endturn" mnemonicParsing="false" onAction="#endTurn" prefHeight="50.0" prefWidth="77.0" text="End Turn" GridPane.columnIndex="1" />
                     </children>
                 </GridPane>
             <AnchorPane prefHeight="450.0" prefWidth="854.0">
