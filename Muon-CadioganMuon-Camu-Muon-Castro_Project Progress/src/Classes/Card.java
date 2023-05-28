@@ -31,8 +31,6 @@ public abstract class Card {
         return name;
     }
 
-    public void setNumberInHand(int num) {numberInHand = num;}
-    public int getNumberInHand() {return numberInHand;}
     public void play(Card c, Player p) {}
     public String getType() {
         return type;

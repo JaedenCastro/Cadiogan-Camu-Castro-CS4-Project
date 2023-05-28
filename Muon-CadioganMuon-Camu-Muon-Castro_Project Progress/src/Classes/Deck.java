@@ -18,9 +18,9 @@ public class Deck {
 
     public Deck() {
         deck = new ArrayList<>(52);
-        hand = new ArrayList<>(13);
+        hand = new ArrayList<>();
         drawList = deck;
-        discardList = new ArrayList<>(0);
+        discardList = new ArrayList<>();
     }
     public void addToDeck(Card c) {
         deck.add(c);
@@ -29,7 +29,7 @@ public class Deck {
         getHand().add(deck.get(0)); //adds 1st element of cardList to the end of Hand
         deck.remove(0); // 1st element is 1st card to be drawn
     }
-    public void shuffle() {
+    public void drawShuffle() {
         Collections.shuffle(discardList);
         for (Card a: discardList) {
             getDrawList().add(a);
@@ -37,7 +37,7 @@ public class Deck {
         discardList.clear();
     }
 
-    public void drawShuffle(){
+    public void shuffle(){
         Collections.shuffle(drawList);
     }
 

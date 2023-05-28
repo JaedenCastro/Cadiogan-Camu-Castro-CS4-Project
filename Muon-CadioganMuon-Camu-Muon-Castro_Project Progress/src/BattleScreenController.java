@@ -32,9 +32,10 @@ public class BattleScreenController extends ControllerBase implements Initializa
     Stat Heal = new Stat ("Heal");
     Condition ifelse = new Condition("ifelse");
     ControlFlow forloop = new ControlFlow("forloop");
+    ControlFlow whileloop = new ControlFlow ("whileloop");
     int cardNum=0;
     @FXML
-    private Text hpLabel, playerDisplay, blockLabel, eHpLabel;
+    private Text hpLabel, playerDisplay, blockLabel, eHpLabel, deckDisplay1, deckDisplay2;
     @FXML private HBox cards;
     @FXML private HBox pile1, pile2, pile3;
     private HBox activeBox;
@@ -52,6 +53,8 @@ public class BattleScreenController extends ControllerBase implements Initializa
     }
     private void Draw () {
         try {
+            deckDisplay1.setText("Player 1 Draw list count:  " + (p1Deck.getDeck().size()-1));
+            deckDisplay2.setText("Player 2 Draw list count:  " + (p2Deck.getDeck().size()-1));
             Image cardA = new Image("Images/" + currentDeck.getDeck().get(0).getName() + ".png");
             ImageView cardIcon = new ImageView();
             cardIcon.setImage(cardA);
@@ -70,8 +73,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
             stackPane.setOnMouseEntered(e -> {
                 activeStackPane = stackPane;
             });
-            currentDeck.getHand().add(currentDeck.getDrawList().get(0));
-            currentDeck.getDrawList().remove(0);
+            currentDeck.draw();
 
             stackPane.getChildren().forEach((this::makeDraggable));
             stackPane.getChildren().forEach((this::makeDroppable));
@@ -320,8 +322,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
         try {
             ObservableList<Node> children = cards.getChildren();
             children.remove(children.size() - 1);
-            // currentDeck.getDiscardList().add(currentDeck.getHand().get(0)); // will be used later when shuffle is implemented
-            currentDeck.getDrawList().add(currentDeck.getHand().get(0));
+            currentDeck.getDiscardList().add(currentDeck.getHand().get(0)); // will be used later when shuffle is implemented
             currentDeck.getHand().remove((0));
         } catch (IndexOutOfBoundsException e) {
 
@@ -331,20 +332,23 @@ public class BattleScreenController extends ControllerBase implements Initializa
     @FXML
     public void setPlayer() {
         if (!counter) {
-            p1Deck.shuffle();
             currentPlayer = player1;
             currentPlayer.resetBlock();
             inactivePlayer = player2;
             currentDeck = p1Deck;
             playerDisplay.setText("Player 1");
+            deckDisplay1.setText("Player 1 Draw list count:  " + p1Deck.getDeck().size());
+            deckDisplay2.setText("Player 2 Draw list count:  " + p2Deck.getDeck().size());
         } else {
-            p2Deck.shuffle();
             currentPlayer = player2;
             currentPlayer.resetBlock();
             inactivePlayer = player1;
             currentDeck = p2Deck;
             playerDisplay.setText("Player 2");
+            deckDisplay1.setText("Player 1 Draw list count:  " + p1Deck.getDeck().size());
+            deckDisplay2.setText("Player 2 Draw list count:  " + p2Deck.getDeck().size());
         }
+
         hpLabel.setText(currentPlayer.getHealth() +"/100");
         blockLabel.setText(Integer.toString(inactivePlayer.getBlock()));
         eHpLabel.setText(inactivePlayer.getHealth() +"/100");
@@ -356,6 +360,7 @@ public class BattleScreenController extends ControllerBase implements Initializa
             for (int i = 0; i < 5; i++) {
                 Draw();
             }
+
         } catch (IndexOutOfBoundsException e) {
 
         }
@@ -367,6 +372,9 @@ public class BattleScreenController extends ControllerBase implements Initializa
             int size = currentDeck.getHand().size();
             for (int x = 0; x < size; x++ ) {
                 Discard();
+            }
+            if (currentDeck.getDeck().size()<5) {
+                currentDeck.drawShuffle();
             }
             clearPiles();
 
@@ -415,12 +423,12 @@ public class BattleScreenController extends ControllerBase implements Initializa
         for (int i = 0; i <= 10; i++){
             p1Deck.addToDeck(Heal);
         }
-        /*for (int i = 0; i <= 5; i++){
-            p1Deck.addToDeck(for);
+        for (int i = 0; i <= 5; i++){
+            p1Deck.addToDeck(forloop);
         }
         for (int i = 0; i <= 5; i++){
-            p1Deck.addToDeck(while);
-        }*/
+            p1Deck.addToDeck(whileloop);
+        }
 
         for (int i = 0; i <= 14; i++){
             p2Deck.addToDeck(Strike);
@@ -440,8 +448,9 @@ public class BattleScreenController extends ControllerBase implements Initializa
         for (int i = 0; i <= 5; i++){
             p1Deck.addToDeck(whileloop);
         }
-        p1Deck.drawShuffle();
-        p2Deck.drawShuffle();
+        p1Deck.shuffle();
+        p2Deck.shuffle();
+
     }
 
 }

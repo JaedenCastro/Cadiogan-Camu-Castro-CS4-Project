@@ -57,9 +57,6 @@ public class Player {
         this.block = block;
     }
 
-    public void resetBlock() {
-        this.block = 0;
-    }
 
     public int getMaxHP() {
         return maxHP;
