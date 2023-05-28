@@ -13,12 +13,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 
 /**
  *
@@ -357,71 +361,8 @@ public class BattleScreenController extends ControllerBase implements Initializa
         counter = !counter;
 
     }
-    @FXML
-    public void startTurn (ActionEvent event) throws IOException {
-        if (turn == 0){
-            try {
-                for (int i = 0; i < 5; i++) {
-                    Draw();
-                }
-                playerDisplay.setText(inactivePlayer.getName());
-                currPlayerDisplay.setText(currentPlayer.getName());
 
-            }
-            catch (IndexOutOfBoundsException e) {
 
-            }
-        }
-        turn++;
-    }
-    @FXML
-    public void endTurn (ActionEvent event) throws IOException {
-        try {
-            int size = currentDeck.getHand().size();
-            for (int x = 0; x < size; x++ ) {
-                Discard();
-            }
-            if (currentDeck.getDeck().size()<5) {
-                currentDeck.drawShuffle();
-            }
-            clearPiles();
-            if(currentPlayer.getHealth() <= 0){
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, inactivePlayer.getName() + " has won! Would you like" +
-                        " to quit the game?", ButtonType.YES, ButtonType.NO);
-                alert.setTitle("Logout/Exit");
-                alert.setHeaderText(null);
-                ButtonType result = alert.showAndWait().get();
-                if (result == ButtonType.YES) {
-
-                    System.exit(0);
-                }
-                else {
-                    newScreen(event, "MenuScreen.fxml");
-                }
-            }
-            if(inactivePlayer.getHealth() <= 0 ){
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, currentPlayer.getName() + " has won! Would you like" +
-                        " to quit the game?", ButtonType.YES, ButtonType.NO);
-                alert.setTitle("Logout/Exit");
-                alert.setHeaderText(null);
-                ButtonType result = alert.showAndWait().get();
-                if (result == ButtonType.YES) {
-
-                    System.exit(0);
-                }
-                else {
-                    newScreen(event, "MenuScreen.fxml");
-                }
-            }
-            setPlayer();
-            currentPlayer.resetBlock();
-            turn = 0;
-            playerDisplay.setText(inactivePlayer.getName());
-            currPlayerDisplay.setText(currentPlayer.getName()); //need to put this twice (here and startTurn) to ensure that its referring to the right player
-        } catch (IndexOutOfBoundsException e) {
-
-        }
-    }
     private void clearPiles () {
         ObservableList<Node> children = pile2.getChildren();
         int count = pile2.getChildren().size();
@@ -490,6 +431,119 @@ public class BattleScreenController extends ControllerBase implements Initializa
         p1Deck.shuffle();
         p2Deck.shuffle();
 
+        // Load the audio file
+        String audioFile = "../Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/src/Music/shuffle.mp3";
+        Media media = new Media(new File(audioFile).toURI().toString());
+
+        // Load the audio file
+        String audiofile = "../Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/src/Music/deal.mp3";
+        Media Media = new Media(new File(audiofile).toURI().toString());
+
+        // Create the MediaPlayer
+        shufflePlayer = new MediaPlayer(media);
+
+
+        // Create the MediaPlayer
+        dealPlayer = new MediaPlayer(Media);
+    }
+
+    private MediaPlayer shufflePlayer;
+    private MediaPlayer dealPlayer;
+    @FXML
+    private Button endturn;
+    @FXML
+    private Button startturn;
+    @FXML
+    private void endTurn(ActionEvent event) {
+        if (event.getSource() == endturn) {
+            // Perform Functionality 1
+            if (shufflePlayer != null) {
+                if (shufflePlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+
+                    shufflePlayer.stop();
+                }
+                // Start playing the audio from the beginning
+                shufflePlayer.seek(shufflePlayer.getStartTime());
+                shufflePlayer.play();
+            }
+        }
+
+        // Perform Functionality 2
+        try {
+            int size = currentDeck.getHand().size();
+            for (int x = 0; x < size; x++ ) {
+                Discard();
+            }
+            if (currentDeck.getDeck().size()<5) {
+                currentDeck.drawShuffle();
+            }
+            clearPiles();
+            if(currentPlayer.getHealth() <= 0){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, inactivePlayer.getName() + " has won! Would you like" +
+                        " to quit the game?", ButtonType.YES, ButtonType.NO);
+                alert.setTitle("Logout/Exit");
+                alert.setHeaderText(null);
+                ButtonType result = alert.showAndWait().get();
+                if (result == ButtonType.YES) {
+
+                    System.exit(0);
+                }
+                else {
+                    newScreen(event, "MenuScreen.fxml");
+                }
+            }
+            if(inactivePlayer.getHealth() <= 0 ){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, currentPlayer.getName() + " has won! Would you like" +
+                        " to quit the game?", ButtonType.YES, ButtonType.NO);
+                alert.setTitle("Logout/Exit");
+                alert.setHeaderText(null);
+                ButtonType result = alert.showAndWait().get();
+                if (result == ButtonType.YES) {
+
+                    System.exit(0);
+                }
+                else {
+                    newScreen(event, "MenuScreen.fxml");
+                }
+            }
+            setPlayer();
+            currentPlayer.resetBlock();
+            turn = 0;
+            playerDisplay.setText(inactivePlayer.getName());
+            currPlayerDisplay.setText(currentPlayer.getName()); //need to put this twice (here and startTurn) to ensure that its referring to the right player
+        } catch (IndexOutOfBoundsException e) {
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    private void startTurn(ActionEvent event) {
+        if (turn == 0){
+            try {
+                for (int i = 0; i < 5; i++) {
+                    Draw();
+                }
+                playerDisplay.setText(inactivePlayer.getName());
+                currPlayerDisplay.setText(currentPlayer.getName());
+
+            }
+            catch (IndexOutOfBoundsException e) {
+
+            }
+        }
+        turn++;
+
+        // Perform Functionality 2
+        if (dealPlayer != null) {
+            if (dealPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+
+                dealPlayer.stop();
+            }
+            // Start playing the audio from the beginning
+            dealPlayer.seek(dealPlayer.getStartTime());
+            dealPlayer.play();
+        }
     }
 
 }
