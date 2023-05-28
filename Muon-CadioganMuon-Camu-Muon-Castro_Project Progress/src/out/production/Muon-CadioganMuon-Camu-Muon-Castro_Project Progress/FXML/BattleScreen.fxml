@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BattleScreenController">
+    <children>
+        <GridPane onMouseEntered="#resetBools" prefHeight="115.0" prefWidth="960.0" style="-fx-border-color: #000000;">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="310.0" minWidth="10.0" prefWidth="253.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="676.0" minWidth="10.0" prefWidth="676.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="658.0" minWidth="10.0" prefWidth="101.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+                <Button mnemonicParsing="false" onAction="#back" text="Pause" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+            <GridPane onMouseEntered="#resetBools">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HP" textAlignment="RIGHT" wrappingWidth="47.537109375" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Block:" textAlignment="RIGHT" wrappingWidth="60.92578125" GridPane.rowIndex="2" />
+                  <Text fx:id="eHpLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="100/100" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Text fx:id="blockLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Text fx:id="playerDisplay" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../Images/HP.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../Images/block.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
+            </children>
+        </GridPane>
+        <GridPane gridLinesVisible="true" prefHeight="254.0" prefWidth="1280.0" style="-fx-border-color: #000000;">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="668.0" minWidth="10.0" prefWidth="649.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="582.0" minWidth="10.0" prefWidth="329.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="404.0" minWidth="0.0" prefWidth="300.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stat Card Pile" />
+                  <HBox fx:id="pile1" onMouseEntered="#detectRelease1" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="687.0" />
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Condition Card Pile" />
+                  <HBox fx:id="pile2" onMouseEntered="#detectRelease2" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="496.0" />
+               </children>
+            </StackPane>
+            <StackPane onMouseEntered="#detectRelease3" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control Flow Card Pile" />
+                  <HBox fx:id="pile3" onMouseEntered="#detectRelease1" onMouseExited="#resetBools" prefHeight="248.0" prefWidth="496.0" />
+               </children>
+            </StackPane>
+            </children>
+        </GridPane>
+        <HBox prefHeight="354.0" prefWidth="1280.0">
+            <children>
+                <GridPane onMouseEntered="#resetBools" prefHeight="450.0" prefWidth="200.0" style="-fx-border-color: #000000;">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="105.0" minWidth="10.0" prefWidth="96.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="99.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#startTurn" prefHeight="45.0" prefWidth="81.0" text="Start Turn" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="      HP:" textAlignment="RIGHT" wrappingWidth="46.13671875" GridPane.rowIndex="1" />
+                        <Text fx:id="hpLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="100/100" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="81.0" text="View Deck" GridPane.columnIndex="1" />
+                  <ImageView accessibleText="hp" fitHeight="26.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../Images/HP.png" />
+                     </image>
+                  </ImageView>
+                    </children>
+                </GridPane>
+            <AnchorPane prefHeight="450.0" prefWidth="854.0">
+               <children>
+                      <Text layoutX="16.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location of Cards:" wrappingWidth="101.47007751464844" />
+                  <HBox fx:id="cards" onMouseEntered="#detectReleaseHand" prefHeight="360.0" prefWidth="865.0" />
+               </children>
+            </AnchorPane>
+                <Pane onMouseEntered="#resetBools" prefHeight="450.0" prefWidth="234.0" style="-fx-border-color: #000000;">
+                    <children>
+                        <Text fx:id="playerDisplay" layoutX="85.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" />
+                        <Button layoutX="72.0" layoutY="47.0" mnemonicParsing="false" onAction="#endTurn" prefHeight="64.0" prefWidth="104.0" text="End Turn" />
+                    </children>
+                </Pane>
+            </children>
+        </HBox>
+    </children>
+</VBox>

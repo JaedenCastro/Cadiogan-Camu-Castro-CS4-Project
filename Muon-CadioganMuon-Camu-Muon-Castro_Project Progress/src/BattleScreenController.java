@@ -331,23 +331,23 @@ public class BattleScreenController extends ControllerBase implements Initializa
     @FXML
     public void setPlayer() {
         if (!counter) {
-            p1Deck.drawShuffle();
+            p1Deck.shuffle();
             currentPlayer = player1;
             currentPlayer.resetBlock();
             inactivePlayer = player2;
             currentDeck = p1Deck;
             playerDisplay.setText("Player 1");
         } else {
-            p2Deck.drawShuffle();
+            p2Deck.shuffle();
             currentPlayer = player2;
             currentPlayer.resetBlock();
             inactivePlayer = player1;
             currentDeck = p2Deck;
             playerDisplay.setText("Player 2");
         }
-        hpLabel.setText(Integer.toString(currentPlayer.getHealth())+"/100");
+        hpLabel.setText(currentPlayer.getHealth() +"/100");
         blockLabel.setText(Integer.toString(inactivePlayer.getBlock()));
-        eHpLabel.setText(Integer.toString(inactivePlayer.getHealth())+"/100");
+        eHpLabel.setText(inactivePlayer.getHealth() +"/100");
         counter = !counter;
     }
     @FXML

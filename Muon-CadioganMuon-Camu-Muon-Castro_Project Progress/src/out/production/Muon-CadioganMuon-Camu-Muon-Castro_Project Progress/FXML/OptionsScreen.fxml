@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OptionsScreenController">
+    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0d0d1a" height="200.0" layoutX="-2.0" stroke="BLACK" strokeType="INSIDE" width="328.0" />
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <VBox alignment="CENTER" layoutX="37.0" layoutY="6.0" prefHeight="167.0" prefWidth="252.0" spacing="5.0">
+         <children>
+            <Text fill="#fffdfd" strokeType="OUTSIDE" strokeWidth="0.0" text="Master Volume" />
+            <Slider fx:id="volumeSlider" />
+            <Text fill="#fffdfd" strokeType="OUTSIDE" strokeWidth="0.0" text="Background Music" />
+            <Slider />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Sound Effects" />
+            <Slider />
+              <Button fx:id="return" onAction="#back" text="Return" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="10.0" top="20.0" />
+         </padding>
+      </VBox>
+    </children>
+</AnchorPane>

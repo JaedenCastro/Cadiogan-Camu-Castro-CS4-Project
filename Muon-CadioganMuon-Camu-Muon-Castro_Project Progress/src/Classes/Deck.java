@@ -68,4 +68,5 @@ public class Deck {
     public ArrayList<Card> getDiscardList() {
         return discardList;
     }
+
 }
