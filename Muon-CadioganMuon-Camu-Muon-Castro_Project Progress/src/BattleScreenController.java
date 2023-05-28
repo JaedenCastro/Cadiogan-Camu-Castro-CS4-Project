@@ -416,9 +416,8 @@ public class BattleScreenController extends ControllerBase implements Initializa
             setPlayer();
             currentPlayer.resetBlock();
             turn = 0;
-
-            setPlayer();
-
+            playerDisplay.setText(inactivePlayer.getName());
+            currPlayerDisplay.setText(currentPlayer.getName()); //need to put this twice (here and startTurn) to ensure that its referring to the right player
         } catch (IndexOutOfBoundsException e) {
 
         }
