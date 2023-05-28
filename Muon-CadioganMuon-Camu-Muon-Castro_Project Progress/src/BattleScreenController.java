@@ -403,20 +403,45 @@ public class BattleScreenController extends ControllerBase implements Initializa
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        p1Deck.addToDeck(Strike);
-        p1Deck.addToDeck(forloop);
-        p1Deck.addToDeck(ifelse);
-        p1Deck.addToDeck(Strike);
-        p1Deck.addToDeck(Defend);
-        p1Deck.addToDeck(Defend);
-        p1Deck.addToDeck(Heal);
+        for (int i = 0; i <= 14; i++){
+            p1Deck.addToDeck(Strike);
+        }
+        for (int i = 0; i <= 13; i++){
+            p1Deck.addToDeck(Defend);
+        }
+        for (int i = 0; i <= 5; i++){
+            p1Deck.addToDeck(ifelse);
+        }
+        for (int i = 0; i <= 10; i++){
+            p1Deck.addToDeck(Heal);
+        }
+        /*for (int i = 0; i <= 5; i++){
+            p1Deck.addToDeck(for);
+        }
+        for (int i = 0; i <= 5; i++){
+            p1Deck.addToDeck(while);
+        }*/
 
-        p2Deck.addToDeck(Heal);
-        p2Deck.addToDeck(Heal);
-        p2Deck.addToDeck(Heal);
-        p2Deck.addToDeck(ifelse);
-        p2Deck.addToDeck(Strike);
-        p2Deck.addToDeck(Defend);
+        for (int i = 0; i <= 14; i++){
+            p2Deck.addToDeck(Strike);
+        }
+        for (int i = 0; i <= 13; i++){
+            p2Deck.addToDeck(Defend);
+        }
+        for (int i = 0; i <= 5; i++){
+            p2Deck.addToDeck(ifelse);
+        }
+        for (int i = 0; i <= 10; i++){
+            p2Deck.addToDeck(Heal);
+        }
+        /*for (int i = 0; i <= 5; i++){
+            p2Deck.addToDeck(for);
+        }
+        for (int i = 0; i <= 5; i++){
+            p1Deck.addToDeck(while);
+        }*/
+        p1Deck.drawShuffle();
+        p2Deck.drawShuffle();
     }
 
 }
