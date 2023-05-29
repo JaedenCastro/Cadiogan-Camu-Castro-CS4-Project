@@ -29,6 +29,7 @@ import java.io.File;
  * @author jaede
  */
 public class BattleScreenController extends ControllerBase implements Initializable {
+
     Deck p1Deck = new Deck();
     Deck p2Deck = new Deck();
     Player player1 = new Player("Player 1",100, 100, p1Deck);
@@ -53,10 +54,20 @@ public class BattleScreenController extends ControllerBase implements Initializa
     Board statPile = new Board(); Board conditionPile = new Board(); Board controlFlowPile = new Board(); Board activePile = new Board();
     StackPane activeStackPane;
     int turn = 0;
+    /**
+     * Event handler for the back button. It switches to the pause screen.
+     *
+     * @param event The action event triggered by the button.
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
     public void back (ActionEvent event) throws IOException {
         newScreen(event, "PauseScreen.fxml");
     }
+    /**
+     * Draws a card from the current player's deck and adds it to the hand.
+     * It also updates the UI to reflect the changes.
+     */
     private void Draw () {
         try {
             deckDisplay1.setText("Player 1 Draw list count:  " + (p1Deck.getDeck().size()-1));
@@ -389,6 +400,12 @@ public class BattleScreenController extends ControllerBase implements Initializa
             statPile.getPile().remove(0);
         }
     }
+    /**
+     * Initializes the controller and the battle screen.
+     *
+     * @param url  The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param rb   The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         for (int i = 0; i <= 14; i++){

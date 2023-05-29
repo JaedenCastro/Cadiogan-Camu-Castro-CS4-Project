@@ -25,7 +25,12 @@ public class OptionsScreenController extends ControllerBase implements Initializ
 
     @FXML
     private Label label;
-
+    /**
+     * Transition back to the pause screen.
+     *
+     * @param event The action event triggered by the button.
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
     private void back(ActionEvent event) throws IOException {
         newScreen(event, "PauseScreen.fxml");
@@ -34,7 +39,12 @@ public class OptionsScreenController extends ControllerBase implements Initializ
     private MediaPlayer mediaPlayer;
     private static final String MEDIA_URL = new File("../Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/src/Music/bgmusic.mp3")
             .toURI().toString();
-
+    /**
+     * Initializes the controller and sets up the options screen.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param rb  The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 

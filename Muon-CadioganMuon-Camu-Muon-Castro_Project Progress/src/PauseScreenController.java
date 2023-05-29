@@ -16,21 +16,45 @@ public class PauseScreenController extends ControllerBase implements Initializab
     
     @FXML
     private Label label;
-    
+
+    /**
+     * Resumes the game and transitions back to the battle screen.
+     *
+     * @param event The action event triggered by the button.
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
     public void resume (ActionEvent event) throws IOException {
         newScreen(event, "BattleScreen.fxml");
     }
 
+    /**
+     * Transitions to the menu screen.
+     *
+     * @param event The action event triggered by the button.
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
     public void menu (ActionEvent event) throws IOException {
         newScreen(event, "MenuScreen.fxml");
     }
-    
+
+    /**
+     * Transitions to the options screen.
+     *
+     * @param event The action event triggered by the button.
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
     public void settings (ActionEvent event) throws IOException {
         newScreen(event, "OptionsScreen.fxml");
     }
+    /**
+     * Quits the game and exits the application if confirmed by the user.
+     *
+     * @param event The action event triggered by the button.
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
     public void quit (ActionEvent event) throws IOException {
 

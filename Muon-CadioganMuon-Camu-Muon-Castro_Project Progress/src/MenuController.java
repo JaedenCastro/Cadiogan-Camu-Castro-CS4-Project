@@ -27,9 +27,21 @@ import javafx.scene.control.ButtonType;
  */
 public class MenuController extends ControllerBase implements Initializable  {
     @FXML private ImageView logo;
+    /**
+     * Starts the game and transitions to the battle screen.
+     *
+     * @param event The action event triggered by the button.
+     * @throws IOException If an I/O error occurs.
+     */
     public void startGame (ActionEvent event) throws IOException {
         newScreen(event, "BattleScreen.fxml");
     }
+    /**
+     * Quits the game and exits the application if confirmed by the user.
+     *
+     * @param event The action event triggered by the button.
+     * @throws IOException If an I/O error occurs.
+     */
         public void quitGame (ActionEvent event) throws IOException {
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit?", ButtonType.YES, ButtonType.CANCEL);
@@ -45,12 +57,23 @@ public class MenuController extends ControllerBase implements Initializable  {
                 System.exit(0);
             }
         }
+    /**
+     * Event handler for displaying the logo image when the mouse hovers over it.
+     *
+     * @param mouseEvent The mouse event triggered by hovering over the logo image.
+     */
     @FXML
     public void showLogo(javafx.scene.input.MouseEvent mouseEvent) {
         logo.setOpacity((100));
     }
     @FXML
     private ImageView backgroundImage;
+    /**
+     * Initializes the controller and sets up the menu screen with the logo and background image.
+     *
+     * @param url  The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param rb   The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
