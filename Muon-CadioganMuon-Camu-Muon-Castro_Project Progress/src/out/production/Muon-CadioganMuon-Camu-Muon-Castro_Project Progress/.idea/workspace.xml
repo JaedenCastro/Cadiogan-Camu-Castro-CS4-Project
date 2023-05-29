@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="890410a3-f1fd-4839-b7e6-964ad0bdc9de" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/BattleScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BattleScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/BattleScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/BattleScreenController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/ControllerBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/ControllerBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/FXML/BattleScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/FXML/BattleScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/FXML/MenuScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/FXML/MenuScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/Images/bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/Images/bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/MenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/OptionsScreenController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/OptionsScreenController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/OptionsScreenController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/OptionsScreenController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/OptionsScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/OptionsScreenController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/PauseScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/PauseScreenController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +34,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/jaede/CS/4th Qtr/Finished Outputs/Cadiogan-Camu-Castro-CS4-Project/Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/src"
+    "last_opened_file_path": "D:/jaede/CS/4th Qtr/Finished Outputs/Project/Cadiogan-Camu-Castro-CS4-Project"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

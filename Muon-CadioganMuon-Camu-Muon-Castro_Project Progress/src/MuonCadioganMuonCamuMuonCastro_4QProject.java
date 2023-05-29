@@ -30,18 +30,5 @@ public class MuonCadioganMuonCamuMuonCastro_4QProject extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    /*
-    @FXML Text l1,l2, l3, l4, l5, l6, l7;
-    private void nextLog(String s){
-        l7.setText(l6.getText());
-        l6.setText(l5.getText());
-        l5.setText(l4.getText());
-        l4.setText(l3.getText());
-        l3.setText(l2.getText());
-        l2.setText(l1.getText());
-        l1.setText(s);
-    }
-
-     */
     
 }

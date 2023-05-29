@@ -449,11 +449,11 @@ public class BattleScreenController extends ControllerBase implements Initializa
         p2Deck.shuffle();
 
         // Load the audio file
-        String audioFile = "../Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/src/Music/shuffle.mp3";
+        String audioFile = "Music/shuffle.mp3";
         Media media = new Media(new File(audioFile).toURI().toString());
 
         // Load the audio file
-        String audiofile = "../Muon-CadioganMuon-Camu-Muon-Castro_Project Progress/src/Music/deal.mp3";
+        String audiofile = "Music/deal.mp3";
         Media Media = new Media(new File(audiofile).toURI().toString());
 
         // Create the MediaPlayer

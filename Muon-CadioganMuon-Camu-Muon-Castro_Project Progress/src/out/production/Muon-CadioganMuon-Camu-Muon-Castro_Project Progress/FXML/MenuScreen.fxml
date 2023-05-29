@@ -41,7 +41,9 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MenuController">
     <children>
+
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="452.0" prefWidth="793.0" VBox.vgrow="ALWAYS">
+            <ImageView fx:id="backgroundImage" fitWidth="800" fitHeight="600" />
             <children>
             <ImageView fx:id="logo" fitHeight="180.0" fitWidth="247.0" layoutX="197.0" layoutY="62.0" onMouseMoved="#showLogo" pickOnBounds="true" preserveRatio="true" />
                 <Button layoutX="263.0" layoutY="229.0" mnemonicParsing="false" onAction="#startGame" prefHeight="39.0" prefWidth="115.0" text="Start Game" />
